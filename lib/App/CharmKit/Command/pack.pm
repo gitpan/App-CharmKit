@@ -1,5 +1,5 @@
 package App::CharmKit::Command::pack;
-$App::CharmKit::Command::pack::VERSION = '0.003_2';
+$App::CharmKit::Command::pack::VERSION = '0.003_3';
 # ABSTRACT: Package hooks for distribution
 
 
@@ -14,7 +14,6 @@ sub opt_spec {
     return ();
 }
 
-sub abstract { 'Build distributable hooks for charm deployment'}
 sub usage_desc {'%c pack'}
 
 sub execute {
@@ -36,7 +35,7 @@ App::CharmKit::Command::pack - Package hooks for distribution
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 SYNOPSIS
 

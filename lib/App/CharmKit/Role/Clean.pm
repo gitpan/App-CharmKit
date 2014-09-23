@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Clean;
-$App::CharmKit::Role::Clean::VERSION = '0.003_2';
+$App::CharmKit::Role::Clean::VERSION = '0.003_3';
 # ABSTRACT: Project cleaner role
 
 use Moo::Role;
@@ -23,7 +23,7 @@ App::CharmKit::Role::Clean - Project cleaner role
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 METHODS
 

@@ -1,6 +1,6 @@
 package App::CharmKit::Command::init;
-$App::CharmKit::Command::init::VERSION = '0.003_2';
-# ABSTRACT: Initialization of project
+$App::CharmKit::Command::init::VERSION = '0.003_3';
+# ABSTRACT: Generate a charm project
 
 
 
@@ -25,7 +25,6 @@ sub opt_spec {
     );
 }
 
-sub abstract { 'Generate a charm skeleton.'}
 sub usage_desc {'%c init [--options] <charm-name>'}
 
 sub validate_args {
@@ -110,11 +109,11 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Command::init - Initialization of project
+App::CharmKit::Command::init - Generate a charm project
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 SYNOPSIS
 

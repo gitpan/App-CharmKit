@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.003_2';
+$charm::VERSION = '0.003_3';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -10,10 +10,8 @@ use warnings;
 use Import::Into;
 
 use feature ();
-use Path::Tiny qw(path);
-use Text::MicroTemplate;
+use Path::Tiny;
 use Test::More;
-use Carp qw(croak);
 
 sub import {
     my $target = caller;
@@ -26,13 +24,13 @@ sub import {
     'warnings'->import::into($target);
     'utf8::all'->import::into($target);
     'autodie'->import::into($target, ':all');
-    'feature'->import::into($target, ':5.10');
+    'feature'->import::into($target, ':5.14');
     'English'->import::into($target, '-no_match_vars');
+    Path::Tiny->import::into($target, qw(path));
 
     if ($flags{sys}) {
         require 'App/CharmKit/Sys.pm';
         'App::CharmKit::Sys'->import::into($target);
-        Path::Tiny->import::into($target, qw(path));
     }
 
     if ($flags{tester}) {
@@ -45,8 +43,6 @@ sub import {
 
     require 'App/CharmKit/Logging.pm';
     'App::CharmKit::Logging'->import::into($target);
-
-    Text::MicroTemplate->import::into($target, ':all');
 
 }
 
@@ -64,7 +60,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 SYNOPSIS
 
@@ -95,9 +91,29 @@ List of modules exported by helper:
 
 L<Path::Tiny>
 
+Exposes B<path> routine
+
+=item *
+
+L<YAML::Tiny>
+
+Exposes object as B<yaml>
+
+=item *
+
+L<JSON::PP>
+
+Exposes object as B<json>
+
 =item *
 
 L<Text::MicroTemplate>
+
+Exposes object as B<tmpl>
+
+=item *
+
+L<Test::More>
 
 =item *
 
@@ -106,10 +122,6 @@ L<autodie>
 =item *
 
 L<utf8::all>
-
-=item *
-
-L<Test::More>
 
 =back
 

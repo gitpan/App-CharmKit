@@ -1,12 +1,12 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.003_2';
+$App::CharmKit::Sys::VERSION = '0.003_3';
 # ABSTRACT: system utilities
 
 
 use IPC::Run qw(run timeout);
 use Exporter qw(import);
 
-our @EXPORT = qw/execute apt_inst/;
+our @EXPORT = qw/execute apt_inst apt_upgrade apt_update/;
 
 sub execute {
     my ($command) = @_;
@@ -29,6 +29,18 @@ sub apt_inst {
     return $ret->{stdout};
 }
 
+sub apt_upgrade {
+    my $cmd = ['apt-get', '-qyf', 'dist-upgrade'];
+    my $ret = execute($cmd);
+    return $ret->{stdout};
+}
+
+sub apt_update {
+    my $cmd = ['apt-get', 'update'];
+    my $ret = execute($cmd);
+    return $ret->{stdout};
+}
+
 1;
 
 __END__
@@ -43,7 +55,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 SYNOPSIS
 
@@ -53,10 +65,9 @@ or
 
   use App::CharmKit::Sys;
 
-  # Exposes Path::Tiny
-  my $curpath = path('.');
-  my $homepath = path('~');
-  $homepath->child('.config')->mkpath;
+  apt_update();
+  apt_upgrade();
+  apt_inst(['nginx-common', 'redis-server']);
 
 =head1 DESCRIPTION
 
@@ -76,7 +87,19 @@ Executes a local command:
 
 Installs packages via apt-get
 
-   apt_inst ['nginx'];
+   apt_inst(['nginx']);
+
+=head2 apt_upgrade()
+
+Upgrades system
+
+   apt_upgrade();
+
+=head2 apt_update()
+
+Update repository sources
+
+   apt_update();
 
 =head1 AUTHOR
 

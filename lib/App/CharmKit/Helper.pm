@@ -1,9 +1,12 @@
 package App::CharmKit::Helper;
-$App::CharmKit::Helper::VERSION = '0.003_2';
+$App::CharmKit::Helper::VERSION = '0.003_3';
 # ABSTRACT: charm helpers
 
 
 use App::CharmKit::Sys qw/execute/;
+use YAML::Tiny;
+use JSON::PP;
+use Text::MicroTemplate;
 use Exporter qw/import/;
 
 our @EXPORT = qw/config_get
@@ -13,7 +16,16 @@ our @EXPORT = qw/config_get
   relation_list
   open_port
   close_port
-  unit_get/;
+  unit_get
+  json
+  yaml
+  tmpl/;
+
+sub json { JSON::PP->new->utf8; }
+
+sub yaml { YAML::Tiny->new(@_); }
+
+sub tmpl { Text::MicroTemplate->new(@_); }
 
 sub service_control {
     my $service_name = shift;
@@ -116,7 +128,7 @@ App::CharmKit::Helper - charm helpers
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 SYNOPSIS
 
@@ -135,6 +147,18 @@ or
 Charm helpers for composition
 
 =head1 FUNCTIONS
+
+=head2 json
+
+Wrapper for JSON::PP
+
+=head2 yaml
+
+Wrapper for YAML::Tiny
+
+=head2 tmpl
+
+Wrapper for Text::MicroTemplate
 
 =head2 service_control(STR service_name, STR action)
 

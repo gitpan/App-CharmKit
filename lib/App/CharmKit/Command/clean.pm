@@ -1,6 +1,6 @@
 package App::CharmKit::Command::clean;
-$App::CharmKit::Command::clean::VERSION = '0.003_2';
-# ABSTRACT: Cleanses project
+$App::CharmKit::Command::clean::VERSION = '0.003_3';
+# ABSTRACT: Cleans project
 
 
 use App::CharmKit -command;
@@ -14,7 +14,6 @@ sub opt_spec {
     return ();
 }
 
-sub abstract { 'Cleanses project'}
 sub usage_desc {'%c clean'}
 
 sub execute {
@@ -39,11 +38,11 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Command::clean - Cleanses project
+App::CharmKit::Command::clean - Cleans project
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 SYNOPSIS
 

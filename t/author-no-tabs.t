@@ -33,6 +33,7 @@ my @files = (
     'lib/App/CharmKit/Role/Pack.pm',
     'lib/App/CharmKit/Sys.pm',
     'lib/charm.pm',
+    't/00-sugar.t',
     't/author-no-tabs.t',
     't/release-minimum-version.t'
 );

@@ -1,6 +1,6 @@
 package App::CharmKit::Command::test;
-$App::CharmKit::Command::test::VERSION = '0.003_2';
-# ABSTRACT: Runs a test runner
+$App::CharmKit::Command::test::VERSION = '0.003_3';
+# ABSTRACT: Test your charm project
 
 
 use App::CharmKit -command;
@@ -17,7 +17,6 @@ sub opt_spec {
     );
 }
 
-sub abstract { 'Tests your charm project'}
 sub usage_desc {'%c test [-r]'}
 
 sub execute {
@@ -39,11 +38,11 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Command::test - Runs a test runner
+App::CharmKit::Command::test - Test your charm project
 
 =head1 VERSION
 
-version 0.003_2
+version 0.003_3
 
 =head1 SYNOPSIS
 
