@@ -27,6 +27,7 @@ my @files = (
     'lib/App/CharmKit/Logging.pm',
     'lib/App/CharmKit/Manual.pod',
     'lib/App/CharmKit/Manual/GettingStarted.pod',
+    'lib/App/CharmKit/Role/Clean.pm',
     'lib/App/CharmKit/Role/Generate.pm',
     'lib/App/CharmKit/Role/Init.pm',
     'lib/App/CharmKit/Role/Pack.pm',

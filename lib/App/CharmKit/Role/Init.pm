@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.003_1';
+$App::CharmKit::Role::Init::VERSION = '0.003_2';
 # ABSTRACT: Initialization of new charms
 
 use Carp;
@@ -62,18 +62,7 @@ done_testing;
     $yaml->write($path->child('metadata.yaml'));
 
     # config.yaml
-    $yaml = YAML::Tiny->new(
-        {   options => {
-                supports_charmkit => {
-                    default => 'true',
-                    description =>
-                      'Supports extended functionality from App::CharmKit',
-                    type => 'boolean'
-                }
-            }
-        }
-    );
-    $yaml->write($path->child('config.yaml'));
+    $path->child('config.yaml')->touch;
 
     # LICENSE
     my $class = "Software::License::" . $project->{license};
@@ -120,7 +109,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.003_1
+version 0.003_2
 
 =head1 METHODS
 

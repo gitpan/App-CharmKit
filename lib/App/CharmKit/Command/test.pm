@@ -1,5 +1,5 @@
 package App::CharmKit::Command::test;
-$App::CharmKit::Command::test::VERSION = '0.003_1';
+$App::CharmKit::Command::test::VERSION = '0.003_2';
 # ABSTRACT: Runs a test runner
 
 
@@ -43,7 +43,7 @@ App::CharmKit::Command::test - Runs a test runner
 
 =head1 VERSION
 
-version 0.003_1
+version 0.003_2
 
 =head1 SYNOPSIS
 

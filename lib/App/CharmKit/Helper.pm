@@ -1,5 +1,5 @@
 package App::CharmKit::Helper;
-$App::CharmKit::Helper::VERSION = '0.003_1';
+$App::CharmKit::Helper::VERSION = '0.003_2';
 # ABSTRACT: charm helpers
 
 
@@ -116,7 +116,7 @@ App::CharmKit::Helper - charm helpers
 
 =head1 VERSION
 
-version 0.003_1
+version 0.003_2
 
 =head1 SYNOPSIS
 
@@ -124,7 +124,7 @@ version 0.003_1
 
 or
 
-  use charm -helper;
+  use charm;
 
   my $port = config_get 'port';
   my $database = relation_get 'database';

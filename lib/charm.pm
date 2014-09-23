@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.003_1';
+$charm::VERSION = '0.003_2';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -64,11 +64,11 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.003_1
+version 0.003_2
 
 =head1 SYNOPSIS
 
-use charm;
+  use charm;
 
 =head1 DESCRIPTION
 
@@ -93,7 +93,7 @@ List of modules exported by helper:
 
 =item *
 
-L<Path::Tiny::path>
+L<Path::Tiny>
 
 =item *
 

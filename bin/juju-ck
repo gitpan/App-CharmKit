@@ -20,7 +20,7 @@ juju-ck - juju plugin for interfacing with charms made by App-CharmKit
 
 =head1 VERSION
 
-version 0.003_1
+version 0.003_2
 
 =head1 AUTHOR
 

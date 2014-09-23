@@ -1,32 +1,12 @@
-package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.003_2';
-# ABSTRACT: system utilities
+package App::CharmKit::Role::Clean;
+$App::CharmKit::Role::Clean::VERSION = '0.003_2';
+# ABSTRACT: Project cleaner role
 
+use Moo::Role;
 
-use IPC::Run qw(run timeout);
-use Exporter qw(import);
-
-our @EXPORT = qw/execute apt_inst/;
-
-sub execute {
-    my ($command) = @_;
-    my $result = run $command, \my $stdin, \my $stdout, \my $stderr;
-    chomp for ($stdout, $stderr);
-
-    die $stderr unless $? eq 0;
-    +{  stdout    => $stdout,
-        stderr    => $stderr,
-        has_error => $? > 0,
-        error     => $?,
-    };
-}
-
-sub apt_inst {
-    my $pkgs = shift;
-    my $cmd = ['apt-get', '-qyf', 'install'];
-    map { push @{$cmd}, $_ } @{$pkgs};
-    my $ret = execute($cmd);
-    return $ret->{stdout};
+sub clean {
+    my ($self, $files) = @_;
+    map { -f $_ ? $_->remove : $_->remove_tree } @{$files};
 }
 
 1;
@@ -39,44 +19,17 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Sys - system utilities
+App::CharmKit::Role::Clean - Project cleaner role
 
 =head1 VERSION
 
 version 0.003_2
 
-=head1 SYNOPSIS
+=head1 METHODS
 
-  use charm -sys;
+=head2 clean(ARRAYREF [Path::Tiny files])
 
-or
-
-  use App::CharmKit::Sys;
-
-  # Exposes Path::Tiny
-  my $curpath = path('.');
-  my $homepath = path('~');
-  $homepath->child('.config')->mkpath;
-
-=head1 DESCRIPTION
-
-Provides system utilities such as installing packages, managing files, and more.
-
-=head1 FUNCTIONS
-
-=head2 execute(ARRAYREF command)
-
-Executes a local command:
-
-   my $cmd = ['juju-log', 'a message'];
-   my $ret = execute($cmd);
-   print $ret->{stdout};
-
-=head2 apt_inst(ARRAYREF pkgs)
-
-Installs packages via apt-get
-
-   apt_inst ['nginx'];
+Cleans up files.
 
 =head1 AUTHOR
 
