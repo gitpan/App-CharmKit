@@ -1,0 +1,43 @@
+---
+abstract: 'Perl Framework for authoring Juju charms'
+author:
+  - 'Adam Stokes <adamjs@cpan.org>'
+build_requires:
+  App::FatPacker: '0'
+  Pod::Elemental::Transformer::List: '0'
+  Software::License: '0'
+  Test::Mojo: '0'
+  Test::More: '0'
+  Test::NoTabs: '0'
+  autobox: '0'
+  autodie: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: App-CharmKit
+requires:
+  App::Cmd::Setup: '0'
+  Carp: '0'
+  Exporter: '0'
+  File::chdir: '0'
+  IO::Prompter: '0'
+  IPC::Run: '0'
+  Import::Into: '0'
+  Moo: '0'
+  Moo::Role: '0'
+  Path::Tiny: '0'
+  Software::License: '0'
+  Test::More: '0'
+  Text::MicroTemplate: '0'
+  YAML::Tiny: '0'
+  feature: '0'
+  namespace::clean: '0'
+  strict: '0'
+  utf8::all: '0'
+  warnings: '0'
+version: '0.002'
