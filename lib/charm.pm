@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.002';
+$charm::VERSION = '0.003_1';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -64,7 +64,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.002
+version 0.003_1
 
 =head1 SYNOPSIS
 
@@ -76,11 +76,11 @@ Exposing helper subs from various packages that would be useful in writing
 charm hooks. Including but not limited too strict, warnings, utf8, Path::Tiny,
 etc ..
 
-    use charm -sys;
-
-or ..
     use App::CharmKit::Sys;
 
+or ..
+
+    use charm -sys, -logging;
     my $ret = execute ['ls', '/tmp'];
     print($ret->{stdout});
     log 'went to the park';
@@ -89,9 +89,29 @@ or ..
 
 List of modules exported by helper:
 
+=over 4
+
+=item *
+
 L<Path::Tiny::path>
 
-L<Carp::croak>
+=item *
+
+L<Text::MicroTemplate>
+
+=item *
+
+L<autodie>
+
+=item *
+
+L<utf8::all>
+
+=item *
+
+L<Test::More>
+
+=back
 
 =head1 AUTHOR
 

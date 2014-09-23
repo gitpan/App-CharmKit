@@ -1,5 +1,5 @@
 package App::CharmKit::Command::init;
-$App::CharmKit::Command::init::VERSION = '0.002';
+$App::CharmKit::Command::init::VERSION = '0.003_1';
 # ABSTRACT: Initialization of project
 
 
@@ -114,7 +114,7 @@ App::CharmKit::Command::init - Initialization of project
 
 =head1 VERSION
 
-version 0.002
+version 0.003_1
 
 =head1 SYNOPSIS
 

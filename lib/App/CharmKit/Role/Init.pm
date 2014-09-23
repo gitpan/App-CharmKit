@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.002';
+$App::CharmKit::Role::Init::VERSION = '0.003_1';
 # ABSTRACT: Initialization of new charms
 
 use Carp;
@@ -120,7 +120,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.002
+version 0.003_1
 
 =head1 METHODS
 

@@ -1,25 +1,32 @@
-package App::CharmKit::Command::pack;
-$App::CharmKit::Command::pack::VERSION = '0.003_1';
-# ABSTRACT: Package hooks for distribution
+package App::CharmKit::Command::test;
+$App::CharmKit::Command::test::VERSION = '0.003_1';
+# ABSTRACT: Runs a test runner
 
 
 use App::CharmKit -command;
-
 use Moo;
 with('App::CharmKit::Role::Pack');
 
 use namespace::clean;
 
 sub opt_spec {
-    return ();
+    return (
+        [   "rebuild|r",
+            "force a re-pack of charm project before running tests"
+        ]
+    );
 }
 
-sub abstract { 'Build distributable hooks for charm deployment'}
-sub usage_desc {'%c pack'}
+sub abstract { 'Tests your charm project'}
+sub usage_desc {'%c test [-r]'}
 
 sub execute {
     my ($self, $opt, $args) = @_;
-    $self->build;
+    if ($opt->{rebuild}) {
+        $self->build;
+    }
+    my $cmd = "prove -v tests/*.test";
+    system($cmd);
 }
 
 1;
@@ -32,7 +39,7 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Command::pack - Package hooks for distribution
+App::CharmKit::Command::test - Runs a test runner
 
 =head1 VERSION
 
@@ -40,20 +47,12 @@ version 0.003_1
 
 =head1 SYNOPSIS
 
-Coerce your charm code to a releasable charm.
+  $ charmkit test
 
-  $ charmkit pack
+=head1 DESCRIPTION
 
-=head1 OVERVIEW
-
-In order for a charm to be utilized by juju all hooks must be executable
-and located within your `<toplevel-dir>/hooks` folder. In order to provide
-all dependencies needed by the hooks a method of `fatpacking` occurs to
-bake in all necessary code for each hook to utilize.
-
-The `pack` command will handle all the heavy lifting of fatpacking and
-producing the hooks needed by Juju and if necessary the charm store during
-publishing.
+Runs tests against packaged charm project, useful during iterative testing
+against local juju deployments.
 
 =head1 AUTHOR
 
