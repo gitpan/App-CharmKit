@@ -1,50 +1,43 @@
-package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '0.005';
-# ABSTRACT: Generators for common tasks
+package App::CharmKit::Command::clone;
+$App::CharmKit::Command::clone::VERSION = '0.005';
+# ABSTRACT: Clone charm from github
 
-use Path::Tiny;
-use Moo::Role;
 
-has src => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        path('.')->child('src/hooks');
-    }
-);
+use App::CharmKit -command;
+use Moo;
+with('App::CharmKit::Role::GitHub');
 
-has default_hooks => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        ['install', 'config-changed', 'upgrade-charm', 'start', 'stop'];
-    }
-);
+use namespace::clean;
 
-sub create_hook {
-    my ($self, $hook) = @_;
-
-    (   my $hook_heading =
-          qq{#!/usr/bin/env perl
-# To see what helper functions are available to you automatically, run:
-# > perldoc App::CharmKit::Helper
-#
-# Other functionality can be enabled by putting the following in the beginning
-# of the file:
-# use charm -sys;
-
-use charm;
-
-log("Start of charm authoring for $hook");
-}
+sub opt_spec {
+    return (
+        [   "output|o=s",
+            "Destination directory to place cloned charm"
+        ]
     );
-    $self->src->child($hook)->spew_utf8($hook_heading);
 }
 
-sub create_all_hooks {
-    my ($self) = @_;
-    foreach (@{$self->default_hooks}) {
-        $self->create_hook($_);
+sub usage_desc {
+    my $self = shift;
+    my $eg   = "charmkit get battlemidget/charm-plone -o plone";
+    "$eg\n\n%c clone [-o]";
+}
+
+sub validate_args {
+    my ($self, $opt, $args) = @_;
+    $self->usage_error("Needs a location")
+      unless $args->[0];
+    $self->usage_error("Invalid location specified")
+      unless $args->[0] =~ /^\w+\/\w+/;
+}
+
+sub execute {
+    my ($self, $opt, $args) = @_;
+    if ($opt->{output}) {
+        $self->clone($args->[0], $opt->{output});
+    }
+    else {
+        $self->clone($args->[0]);
     }
 }
 
@@ -58,34 +51,19 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Role::Generate - Generators for common tasks
+App::CharmKit::Command::clone - Clone charm from github
 
 =head1 VERSION
 
 version 0.005
 
-=head1 ATTRIBUTES
+=head1 SYNOPSIS
 
-=head2 src
+  $ charmkit clone battlemidget/charm-plone -o plone
 
-Path::Tiny object for pristine hooks. Primarily used during development
-of non fatpacked hooks.
+=head1 DESCRIPTION
 
-=head2 default_hooks
-
-Arrayref of default charm hooks used when doing a blanket generate
-of all hooks.
-
-=head1 METHODS
-
-=head2 create_hook(STR hook)
-
-Creates a hook file defined by `hook` parameter, also writes out some
-initial starter code to file.
-
-=head2 create_all_hooks()
-
-Iterates `default_hooks` and creates the necessary hook files.
+Clones a charm from GitHub
 
 =head1 AUTHOR
 

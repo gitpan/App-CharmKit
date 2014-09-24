@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.004';
+$App::CharmKit::Role::Init::VERSION = '0.005';
 # ABSTRACT: Initialization of new charms
 
 use YAML::Tiny;
@@ -132,7 +132,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 METHODS
 

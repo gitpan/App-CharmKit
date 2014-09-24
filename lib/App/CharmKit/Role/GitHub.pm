@@ -1,51 +1,17 @@
-package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '0.005';
-# ABSTRACT: Generators for common tasks
+package App::CharmKit::Role::GitHub;
+$App::CharmKit::Role::GitHub::VERSION = '0.005';
+# ABSTRACT: Checkout from github
 
 use Path::Tiny;
 use Moo::Role;
 
-has src => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        path('.')->child('src/hooks');
-    }
-);
-
-has default_hooks => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        ['install', 'config-changed', 'upgrade-charm', 'start', 'stop'];
-    }
-);
-
-sub create_hook {
-    my ($self, $hook) = @_;
-
-    (   my $hook_heading =
-          qq{#!/usr/bin/env perl
-# To see what helper functions are available to you automatically, run:
-# > perldoc App::CharmKit::Helper
-#
-# Other functionality can be enabled by putting the following in the beginning
-# of the file:
-# use charm -sys;
-
-use charm;
-
-log("Start of charm authoring for $hook");
-}
-    );
-    $self->src->child($hook)->spew_utf8($hook_heading);
-}
-
-sub create_all_hooks {
-    my ($self) = @_;
-    foreach (@{$self->default_hooks}) {
-        $self->create_hook($_);
-    }
+sub clone {
+    my $self = shift;
+    my $location = shift;
+    my $dst = shift || (split /\//, $location)[-1];
+    my $cmd = sprintf("git clone -q git\@github.com:%s.git %s", $location, $dst);
+    `$cmd`;
+    printf("%s cloned to %s\n", $location, $dst);
 }
 
 1;
@@ -58,34 +24,17 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Role::Generate - Generators for common tasks
+App::CharmKit::Role::GitHub - Checkout from github
 
 =head1 VERSION
 
 version 0.005
 
-=head1 ATTRIBUTES
-
-=head2 src
-
-Path::Tiny object for pristine hooks. Primarily used during development
-of non fatpacked hooks.
-
-=head2 default_hooks
-
-Arrayref of default charm hooks used when doing a blanket generate
-of all hooks.
-
 =head1 METHODS
 
-=head2 create_hook(STR hook)
+=head2 clone(STR location, STR dst)
 
-Creates a hook file defined by `hook` parameter, also writes out some
-initial starter code to file.
-
-=head2 create_all_hooks()
-
-Iterates `default_hooks` and creates the necessary hook files.
+clone repo from github
 
 =head1 AUTHOR
 

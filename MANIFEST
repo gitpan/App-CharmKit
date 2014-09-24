@@ -11,6 +11,7 @@ cpanfile
 dist.ini
 lib/App/CharmKit.pm
 lib/App/CharmKit/Command/clean.pm
+lib/App/CharmKit/Command/clone.pm
 lib/App/CharmKit/Command/generate.pm
 lib/App/CharmKit/Command/init.pm
 lib/App/CharmKit/Command/pack.pm
@@ -21,6 +22,7 @@ lib/App/CharmKit/Manual.pod
 lib/App/CharmKit/Manual/GettingStarted.pod
 lib/App/CharmKit/Role/Clean.pm
 lib/App/CharmKit/Role/Generate.pm
+lib/App/CharmKit/Role/GitHub.pm
 lib/App/CharmKit/Role/Init.pm
 lib/App/CharmKit/Role/Pack.pm
 lib/App/CharmKit/Sys.pm

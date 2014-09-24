@@ -1,5 +1,5 @@
 package App::CharmKit::Command::test;
-$App::CharmKit::Command::test::VERSION = '0.004';
+$App::CharmKit::Command::test::VERSION = '0.005';
 # ABSTRACT: Test your charm project
 
 
@@ -42,7 +42,7 @@ App::CharmKit::Command::test - Test your charm project
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
