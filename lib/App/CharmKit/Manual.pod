@@ -13,7 +13,7 @@ App::CharmKit::Manual - CharmKit Resources
 
 =head1 VERSION
 
-version 0.003_3
+version 0.004
 
 =head1 CharmKit Resources
 

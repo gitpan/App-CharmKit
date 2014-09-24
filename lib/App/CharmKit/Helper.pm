@@ -1,5 +1,5 @@
 package App::CharmKit::Helper;
-$App::CharmKit::Helper::VERSION = '0.003_3';
+$App::CharmKit::Helper::VERSION = '0.004';
 # ABSTRACT: charm helpers
 
 
@@ -14,6 +14,7 @@ our @EXPORT = qw/config_get
   relation_get
   relation_set
   relation_list
+  service_control
   open_port
   close_port
   unit_get
@@ -128,7 +129,7 @@ App::CharmKit::Helper - charm helpers
 
 =head1 VERSION
 
-version 0.003_3
+version 0.004
 
 =head1 SYNOPSIS
 

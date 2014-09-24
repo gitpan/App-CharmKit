@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 # PODNAME: charmkit
-# ABSTRACT: entry point for charmkit
+# ABSTRACT: charmkit - author charms
 
 
 use strict;
@@ -18,11 +18,11 @@ __END__
 
 =head1 NAME
 
-charmkit - entry point for charmkit
+charmkit - charmkit - author charms
 
 =head1 VERSION
 
-version 0.003_3
+version 0.004
 
 =head1 DESCRIPTION
 

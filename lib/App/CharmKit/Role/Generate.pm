@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '0.003_3';
+$App::CharmKit::Role::Generate::VERSION = '0.004';
 # ABSTRACT: Generators for common tasks
 
 use Path::Tiny;
@@ -35,7 +35,7 @@ sub create_hook {
 
 use charm;
 
-log "Start of charm authoring for $hook";
+log("Start of charm authoring for $hook");
 }
     );
     $self->src->child($hook)->spew_utf8($hook_heading);
@@ -62,7 +62,7 @@ App::CharmKit::Role::Generate - Generators for common tasks
 
 =head1 VERSION
 
-version 0.003_3
+version 0.004
 
 =head1 ATTRIBUTES
 

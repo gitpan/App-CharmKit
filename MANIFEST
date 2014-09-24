@@ -7,7 +7,6 @@ Makefile.PL
 README
 README.mkdn
 bin/charmkit
-bin/juju-ck
 cpanfile
 dist.ini
 lib/App/CharmKit.pm

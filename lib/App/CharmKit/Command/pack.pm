@@ -1,5 +1,5 @@
 package App::CharmKit::Command::pack;
-$App::CharmKit::Command::pack::VERSION = '0.003_3';
+$App::CharmKit::Command::pack::VERSION = '0.004';
 # ABSTRACT: Package hooks for distribution
 
 
@@ -35,7 +35,7 @@ App::CharmKit::Command::pack - Package hooks for distribution
 
 =head1 VERSION
 
-version 0.003_3
+version 0.004
 
 =head1 SYNOPSIS
 

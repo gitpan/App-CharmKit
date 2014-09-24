@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.003_3';
+$App::CharmKit::Sys::VERSION = '0.004';
 # ABSTRACT: system utilities
 
 
@@ -13,7 +13,6 @@ sub execute {
     my $result = run $command, \my $stdin, \my $stdout, \my $stderr;
     chomp for ($stdout, $stderr);
 
-    die $stderr unless $? eq 0;
     +{  stdout    => $stdout,
         stderr    => $stderr,
         has_error => $? > 0,
@@ -55,7 +54,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.003_3
+version 0.004
 
 =head1 SYNOPSIS
 

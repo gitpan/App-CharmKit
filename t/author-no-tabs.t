@@ -16,7 +16,6 @@ use Test::NoTabs;
 
 my @files = (
     'bin/charmkit',
-    'bin/juju-ck',
     'lib/App/CharmKit.pm',
     'lib/App/CharmKit/Command/clean.pm',
     'lib/App/CharmKit/Command/generate.pm',

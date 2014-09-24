@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Pack;
-$App::CharmKit::Role::Pack::VERSION = '0.003_3';
+$App::CharmKit::Role::Pack::VERSION = '0.004';
 # ABSTRACT: Fatpack hooks
 
 use Path::Tiny;
@@ -65,7 +65,7 @@ App::CharmKit::Role::Pack - Fatpack hooks
 
 =head1 VERSION
 
-version 0.003_3
+version 0.004
 
 =head1 ATTRIBUTES
 

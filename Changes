@@ -1,10 +1,51 @@
 ==================================================
-Changes from 2013-09-23 00:00:00 +0000 to present.
+Changes from 2013-09-24 00:00:00 +0000 to present.
 ==================================================
 
---------------------------------------------
-version 0.003_3 at 2014-09-23 21:56:46 +0000
---------------------------------------------
+------------------------------------------
+version 0.004 at 2014-09-24 03:29:49 +0000
+------------------------------------------
+
+  Change: f00199b0e86fd4464d3a4093441ed28d07409164
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-09-23 23:29:43 +0000
+
+    prep for release
+
+    Completed successful charm deploy along with positive unittests
+    results in container.
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 6aa11116243981c550cb2cc4d67f5b4968ade198
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-09-23 22:10:32 +0000
+
+    be specific in whats added to metadata.yaml
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 55eef5d94099719ec869b50db997152b8ab1a603
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-09-23 22:07:12 +0000
+
+    add version prompt
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 751ea23160619b236bcd45f9e75ea0184e464b72
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-09-23 22:06:32 +0000
+
+    use Module::Runtime
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 18ca689eb647f04402f42b8cd58d59a9eee87e8c
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-09-23 17:56:52 +0000
+
+    v0.003_3 
 
   Change: 11ca5ce4fffd96f6e873d428b16a0765dcf3af7d
   Author: Adam Stokes <adam.stokes@ubuntu.com>
