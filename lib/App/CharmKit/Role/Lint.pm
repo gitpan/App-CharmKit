@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Lint;
-$App::CharmKit::Role::Lint::VERSION = '0.006';
+$App::CharmKit::Role::Lint::VERSION = '0.007';
 # ABSTRACT: charm linter
 
 use DDP;
@@ -134,7 +134,7 @@ App::CharmKit::Role::Lint - charm linter
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 SYNOPSIS
 
@@ -149,7 +149,47 @@ Charm Store policies.
 
 =head2 errors
 
-Errors hash
+Errors hash, current list of errors:
+
+=over 4
+
+=item *
+
+ERR_INVALID_COPYRIGHT
+
+=item *
+
+ERR_REQUIRED_CONFIG_ITEM
+
+=item *
+
+ERR_CONFIG_ITEM
+
+=item *
+
+ERR_NO_REQUIRES
+
+=item *
+
+ERR_NO_PEERS
+
+=item *
+
+ERR_NO_PROVIDERS
+
+=item *
+
+ERR_NO_SUBORDINATES
+
+=item *
+
+ERR_EXISTS
+
+=item *
+
+ERR_EMPTY
+
+=back
 
 =head2 rules
 
@@ -197,7 +237,8 @@ The format for rules is as follows:
         - NOT_EMPTY
         - EXISTS
       parse:
-        - ['/<Needs license>/', ERR_INVALID_COPYRIGHT]
+        - pattern: '^options:\s*\n'
+          error: 'ERR_INVALID_COPYRIGHT'
 
 =head2 Available Attributes
 
