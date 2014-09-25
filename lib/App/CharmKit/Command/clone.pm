@@ -1,5 +1,5 @@
 package App::CharmKit::Command::clone;
-$App::CharmKit::Command::clone::VERSION = '0.005';
+$App::CharmKit::Command::clone::VERSION = '0.006';
 # ABSTRACT: Clone charm from github
 
 
@@ -55,7 +55,7 @@ App::CharmKit::Command::clone - Clone charm from github
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 

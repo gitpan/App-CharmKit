@@ -1,5 +1,5 @@
 package App::CharmKit::Helper;
-$App::CharmKit::Helper::VERSION = '0.005';
+$App::CharmKit::Helper::VERSION = '0.006';
 # ABSTRACT: charm helpers
 
 
@@ -133,7 +133,7 @@ App::CharmKit::Helper - charm helpers
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 

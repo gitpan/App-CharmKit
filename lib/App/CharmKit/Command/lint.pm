@@ -1,23 +1,57 @@
-# NAME
+package App::CharmKit::Command::lint;
+$App::CharmKit::Command::lint::VERSION = '0.006';
+# ABSTRACT: Charm Linter
 
-App::CharmKit - Perl Framework for authoring Juju charms
 
-# VERSION
+use App::CharmKit -command;
+use Moo;
+with 'App::CharmKit::Role::Lint';
+use namespace::clean;
+
+sub opt_spec {
+    return ();
+}
+
+sub usage_desc {'%c lint'}
+
+sub execute {
+    my ($self, $opt, $args) = @_;
+    $self->parse();
+    exit($self->has_error);
+}
+
+1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+App::CharmKit::Command::lint - Charm Linter
+
+=head1 VERSION
 
 version 0.006
 
-# AUTHOR
+=head1 SYNOPSIS
+
+  $ charmkit lint
+
+=head1 AUTHOR
 
 Adam Stokes <adamjs@cpan.org>
 
-# COPYRIGHT AND LICENSE
+=head1 COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2014 by Adam Stokes.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
-# DISCLAIMER OF WARRANTY
+=head1 DISCLAIMER OF WARRANTY
 
 BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
 FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT
@@ -39,3 +73,5 @@ RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
 FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
 SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGES.
+
+=cut

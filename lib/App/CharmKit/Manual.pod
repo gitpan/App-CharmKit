@@ -13,7 +13,7 @@ App::CharmKit::Manual - CharmKit Resources
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 CharmKit Resources
 
@@ -25,10 +25,13 @@ L<https://juju.ubuntu.com/docs/>
 
 Juju documentation to learn more about Juju and Charms.
 
-=back
+=item *
 
-* L<App::CharmKit::Manual::GettingStarted>
+L<App::CharmKit::Manual::GettingStarted>
+
 Brief walkthrough on getting started with L<App::CharmKit>
+
+=back
 
 =head1 AUTHOR
 
