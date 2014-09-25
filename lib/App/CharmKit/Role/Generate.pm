@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '0.007';
+$App::CharmKit::Role::Generate::VERSION = '0.008';
 # ABSTRACT: Generators for common tasks
 
 use Path::Tiny;
@@ -62,7 +62,7 @@ App::CharmKit::Role::Generate - Generators for common tasks
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 ATTRIBUTES
 

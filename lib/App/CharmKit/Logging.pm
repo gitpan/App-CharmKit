@@ -1,5 +1,5 @@
 package App::CharmKit::Logging;
-$App::CharmKit::Logging::VERSION = '0.007';
+$App::CharmKit::Logging::VERSION = '0.008';
 # ABSTRACT: reporting utilities
 
 
@@ -27,7 +27,7 @@ App::CharmKit::Logging - reporting utilities
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
@@ -37,7 +37,7 @@ Directly,
 
 Or sugar,
 
-  use charm -logging;
+  use charm;
 
   log 'this is a log emitter';
 

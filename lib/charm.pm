@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.007';
+$charm::VERSION = '0.008';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -39,14 +39,13 @@ sub import {
     'English'->import::into($target, '-no_match_vars');
     Path::Tiny->import::into($target, qw(path));
 
-    if ($flags{sys}) {
-        require 'App/CharmKit/Sys.pm';
-        'App::CharmKit::Sys'->import::into($target);
-    }
-
     if ($flags{tester}) {
         Test::More->import::into($target);
     }
+
+    # expose system utilities by default
+    require 'App/CharmKit/Sys.pm';
+    'App::CharmKit::Sys'->import::into($target);
 
     # expose charm helpers by default
     require 'App/CharmKit/Helper.pm';
@@ -71,7 +70,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 

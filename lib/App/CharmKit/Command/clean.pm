@@ -1,5 +1,5 @@
 package App::CharmKit::Command::clean;
-$App::CharmKit::Command::clean::VERSION = '0.007';
+$App::CharmKit::Command::clean::VERSION = '0.008';
 # ABSTRACT: Cleans project
 
 
@@ -11,10 +11,10 @@ with 'App::CharmKit::Role::Clean';
 use namespace::clean;
 
 sub opt_spec {
-    return ();
+    return (['purge', 'full purge of all generated code (does not affect src)']);
 }
 
-sub usage_desc {'%c clean'}
+sub usage_desc {'%c clean [--purge]'}
 
 sub execute {
     my ($self, $opt, $args) = @_;
@@ -23,7 +23,9 @@ sub execute {
     if (path('fatlib')->exists) {
         push @paths_to_rm, path('fatlib');
     }
-    push @paths_to_rm, path('hooks')->children;
+    if ($opt->{purge}) {
+        push @paths_to_rm, path('hooks')->children;
+    }
     $self->clean(\@paths_to_rm);
     print("Finished cleaning project.\n");
 }
@@ -42,7 +44,7 @@ App::CharmKit::Command::clean - Cleans project
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 

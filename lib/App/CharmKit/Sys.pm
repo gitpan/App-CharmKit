@@ -1,12 +1,79 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.007';
+$App::CharmKit::Sys::VERSION = '0.008';
 # ABSTRACT: system utilities
 
 
+use Path::Tiny;
 use IPC::Run qw(run timeout);
 use Exporter qw(import);
 
-our @EXPORT = qw/execute apt_inst apt_upgrade apt_update/;
+our @EXPORT = qw/execute
+  apt_inst
+  apt_upgrade
+  apt_update
+  make_dir
+  remove_dir
+  set_owner
+  add_user
+  del_user
+  spew
+  slurp
+  getent/;
+
+sub spew {
+  my $path = path(shift);
+  my $contents = shift;
+  $path->spew_utf8($contents);
+}
+
+sub slurp {
+    my $path = path(shift);
+    return $path->slurp_utf8;
+}
+
+sub make_dir {
+    my $dirs = shift;
+    foreach my $dir (@{$dirs}) {
+        path($dir)->mkpath;
+    }
+}
+
+sub remove_dir {
+    my $dirs = shift;
+    foreach my $dir (@{$dirs}) {
+        path($dir)->remove_tree;
+    }
+}
+
+sub set_owner {
+    my ($user, $dirs) = @_;
+    foreach my $dir (@{$dirs}) {
+        execute(['chown', $user, '-R', $dir]);
+    }
+}
+
+sub getent {
+    my ($db, $key) = @_;
+    my $ret = execute(['getent', $db, $key]);
+    return $ret;
+}
+
+sub add_user {
+    my $user    = shift;
+    my $homedir = shift || undef;
+    my $cmd     = ['adduser', '--gecos ""', '--disabled-password'];
+    if ($homedir) {
+        push @{$cmd}, ['--home', $homedir];
+    }
+    my $ret = execute($cmd);
+    return $ret;
+}
+
+sub del_user {
+  my $user = shift;
+  my $ret = execute(['deluser', '--remove-home', $user]);
+  return $ret;
+}
 
 sub execute {
     my ($command) = @_;
@@ -54,7 +121,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
@@ -73,6 +140,42 @@ or
 Provides system utilities such as installing packages, managing files, and more.
 
 =head1 FUNCTIONS
+
+=head2 spew(STR path, STR contents)
+
+writes to a file, defaults to utf8
+
+=head2 slurp(STR path)
+
+reads a file, defaults to utf8
+
+=head2 make_dir(ARRAYREF dirs)
+
+mkdir helper for creating directories
+
+=head2 remove_dir(ARRAYREF dirs)
+
+removes directories
+
+=head2 set_owner(STR user, ARRAYREF dirs)
+
+sets owner of directories
+
+=head2 getent(STR db, STR key)
+
+accesses user info from nss
+
+Params:
+  db: nss database to query
+  key: what to query
+
+=head2 add_user(STR user, STR homedir)
+
+adds user to system
+
+=head2 del_user(STR user)
+
+removes a user, does attempt to remove home directory
 
 =head2 execute(ARRAYREF command)
 

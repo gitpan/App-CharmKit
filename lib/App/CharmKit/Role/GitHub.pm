@@ -1,5 +1,5 @@
 package App::CharmKit::Role::GitHub;
-$App::CharmKit::Role::GitHub::VERSION = '0.007';
+$App::CharmKit::Role::GitHub::VERSION = '0.008';
 # ABSTRACT: Checkout from github
 
 use Path::Tiny;
@@ -28,7 +28,7 @@ App::CharmKit::Role::GitHub - Checkout from github
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 METHODS
 
