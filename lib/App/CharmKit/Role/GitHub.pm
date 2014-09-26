@@ -1,5 +1,5 @@
 package App::CharmKit::Role::GitHub;
-$App::CharmKit::Role::GitHub::VERSION = '0.009';
+$App::CharmKit::Role::GitHub::VERSION = '0.010';
 # ABSTRACT: Checkout from github
 
 use strict;
@@ -30,7 +30,7 @@ App::CharmKit::Role::GitHub - Checkout from github
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 METHODS
 

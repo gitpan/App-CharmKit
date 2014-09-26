@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.009';
+$App::CharmKit::Sys::VERSION = '0.010';
 # ABSTRACT: system utilities
 
 
@@ -171,7 +171,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.009
+version 0.010
 
 =head1 SYNOPSIS
 
@@ -211,17 +211,51 @@ removes directories
 
 sets owner of directories
 
+  set_owner('ubuntu', ['/var/lib/mydb', '/etc/mydb/conf'])
+
 =head2 getent(STR db, STR key)
 
 accesses user info from nss
 
-Params:
-  db: nss database to query
-  key: what to query
+B<Params>
+
+=over 4
+
+=item *
+
+db: nss database to query
+
+=item *
+
+key: what to query
+
+=item *
+
+returns: result from C<execute>
+
+=back
 
 =head2 add_user(STR user, STR homedir)
 
 adds user to system
+
+B<Params>
+
+=over 4
+
+=item *
+
+user: username
+
+=item *
+
+homedir: users home directory
+
+=item *
+
+returns: result from C<execute>
+
+=back
 
 =head2 del_user(STR user)
 
@@ -234,6 +268,20 @@ Executes a local command:
    my $cmd = ['juju-log', 'a message'];
    my $ret = execute($cmd);
    print $ret->{stdout};
+
+B<Params>
+
+=over 4
+
+=item *
+
+command: command to run
+
+=item *
+
+returns: hash of { stdout =>, stderr =>, has_error =>, error => }
+
+=back
 
 =head2 apt_add_repo(STR repo, STR key, BOOL update)
 

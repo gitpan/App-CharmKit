@@ -1,0 +1,131 @@
+# PODNAME: App::CharmKit::Manual::WritingHooks
+# ABSTRACT: How to write hooks using CharmKit
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+App::CharmKit::Manual::WritingHooks - How to write hooks using CharmKit
+
+=head1 VERSION
+
+version 0.010
+
+=head1 Creating a hook
+
+  $ charmkit generate config-changed
+
+This places a templated hook in B<src/hooks/> where all hook development resides.
+
+=head1 Writing a hook
+
+We'll start with an example of a F<config-changed> hook and break down the
+code piece by piece
+
+  #!/usr/bin/env perl
+  use charm;
+
+C<use charm> is the entrypoint to exposing charm routines useful for deploying
+the service. This provides facilities such as installing packages, printing logs,
+getting relation information, and configuring service level options.
+
+  log "Start of charm authoring for config-changed";
+
+The C<log> facility uses C<juju-log> as the utility for logging what's happening
+in your charm.
+
+  my $port = config_get('port');
+
+C<config_get> routine will pull config options defined in F<config.yaml>.
+
+  # close existing bitlbee port
+
+  log "Opening port for bitlbee";
+
+  ( my $output = qq{BITLBEE_PORT=$port
+  BITLBEE_OPTS="-F"
+  BITLBEE_DISABLED=0
+  BITLBEE_UPGRADE_DONT_RESTART=0
+  } );
+
+  path('/etc/default/bitlbee')->spew_utf8($output);
+
+C<path> is exposed from L<Path::Tiny> so anything that applies to that module works
+the same here.
+
+  service_control('bitlbee', 'restart');
+
+C<service_control> is another helper for start/stopping services on the system
+where the charm is placed.
+
+  open_port($port);
+
+C<open_port> exposes a port accessible publicly, and its opposite C<close_port> will
+remove that accessibility.
+
+=head1 Further reading
+
+There are several helpers exposed automatically in order to simply the writing of
+hooks. To see what helpers are available look at the module documentation:
+
+=over 4
+
+=item *
+
+L<App::CharmKit::Sys>
+
+System utilities
+
+=item *
+
+L<App::CharmKit::Logging>
+
+Logging utilities
+
+=item *
+
+L<App::CharmKit::Helper>
+
+Charm specific utilities
+
+=back
+
+=head1 AUTHOR
+
+Adam Stokes <adamjs@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by Adam Stokes.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=head1 DISCLAIMER OF WARRANTY
+
+BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT
+WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER
+PARTIES PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+SOFTWARE IS WITH YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME
+THE COST OF ALL NECESSARY SERVICING, REPAIR, OR CORRECTION.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE LIABLE
+TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES.
+
+=cut
