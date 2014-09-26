@@ -1,9 +1,11 @@
 package App::CharmKit::Role::GitHub;
-$App::CharmKit::Role::GitHub::VERSION = '0.008';
+$App::CharmKit::Role::GitHub::VERSION = '0.009';
 # ABSTRACT: Checkout from github
 
+use strict;
+use warnings;
 use Path::Tiny;
-use Moo::Role;
+use Class::Tiny;
 
 sub clone {
     my $self = shift;
@@ -28,7 +30,7 @@ App::CharmKit::Role::GitHub - Checkout from github
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 METHODS
 

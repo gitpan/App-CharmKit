@@ -1,25 +1,16 @@
 package App::CharmKit::Role::Pack;
-$App::CharmKit::Role::Pack::VERSION = '0.008';
+$App::CharmKit::Role::Pack::VERSION = '0.009';
 # ABSTRACT: Fatpack hooks
 
+use strict;
+use warnings;
 use Path::Tiny;
-use Moo::Role;
 
-has src => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        path('.')->child('src/hooks');
-    }
-);
 
-has src_tests => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        path('.')->child('src/tests');
-    }
-);
+use Class::Tiny {
+    src       => path('.')->child('src/hooks'),
+    src_tests => path('.')->child('src/tests')
+};
 
 
 sub build {
@@ -65,7 +56,7 @@ App::CharmKit::Role::Pack - Fatpack hooks
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 ATTRIBUTES
 

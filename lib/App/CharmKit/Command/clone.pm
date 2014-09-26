@@ -1,13 +1,12 @@
 package App::CharmKit::Command::clone;
-$App::CharmKit::Command::clone::VERSION = '0.008';
+$App::CharmKit::Command::clone::VERSION = '0.009';
 # ABSTRACT: Clone charm from github
 
 
+use strict;
+use warnings;
 use App::CharmKit -command;
-use Moo;
-with('App::CharmKit::Role::GitHub');
-
-use namespace::clean;
+use parent 'App::CharmKit::Role::GitHub';
 
 sub opt_spec {
     return (
@@ -55,7 +54,7 @@ App::CharmKit::Command::clone - Clone charm from github
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

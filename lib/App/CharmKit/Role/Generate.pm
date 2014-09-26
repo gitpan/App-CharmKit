@@ -1,25 +1,17 @@
 package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '0.008';
+$App::CharmKit::Role::Generate::VERSION = '0.009';
 # ABSTRACT: Generators for common tasks
 
+use strict;
+use warnings;
 use Path::Tiny;
-use Moo::Role;
 
-has src => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        path('.')->child('src/hooks');
-    }
-);
 
-has default_hooks => (
-    is      => 'ro',
-    lazy    => 1,
-    default => sub {
-        ['install', 'config-changed', 'upgrade-charm', 'start', 'stop'];
-    }
-);
+use Class::Tiny {
+    src => path('.')->child('src/hooks'),
+    default_hooks =>
+      ['install', 'config-changed', 'upgrade-charm', 'start', 'stop']
+};
 
 sub create_hook {
     my ($self, $hook) = @_;
@@ -62,7 +54,7 @@ App::CharmKit::Role::Generate - Generators for common tasks
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 ATTRIBUTES
 

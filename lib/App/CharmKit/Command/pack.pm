@@ -1,14 +1,13 @@
 package App::CharmKit::Command::pack;
-$App::CharmKit::Command::pack::VERSION = '0.008';
+$App::CharmKit::Command::pack::VERSION = '0.009';
 # ABSTRACT: Package hooks for distribution
 
 
+use strict;
+use warnings;
 use App::CharmKit -command;
 
-use Moo;
-with('App::CharmKit::Role::Pack');
-
-use namespace::clean;
+use parent 'App::CharmKit::Role::Pack';
 
 sub opt_spec {
     return ();
@@ -35,7 +34,7 @@ App::CharmKit::Command::pack - Package hooks for distribution
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

@@ -1,12 +1,12 @@
 package App::CharmKit::Command::generate;
-$App::CharmKit::Command::generate::VERSION = '0.008';
+$App::CharmKit::Command::generate::VERSION = '0.009';
 # ABSTRACT: Generator for hook composition
 
 
+use strict;
+use warnings;
 use App::CharmKit -command;
-use Moo;
-with('App::CharmKit::Role::Generate');
-use namespace::clean;
+use parent 'App::CharmKit::Role::Generate';
 
 sub opt_spec {
     return (
@@ -54,7 +54,7 @@ App::CharmKit::Command::generate - Generator for hook composition
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

@@ -1,14 +1,13 @@
 package App::CharmKit::Command::clean;
-$App::CharmKit::Command::clean::VERSION = '0.008';
+$App::CharmKit::Command::clean::VERSION = '0.009';
 # ABSTRACT: Cleans project
 
-
+use strict;
+use warnings;
 use App::CharmKit -command;
 use Path::Tiny;
 
-use Moo;
-with 'App::CharmKit::Role::Clean';
-use namespace::clean;
+use parent 'App::CharmKit::Role::Clean';
 
 sub opt_spec {
     return (['purge', 'full purge of all generated code (does not affect src)']);
@@ -44,7 +43,7 @@ App::CharmKit::Command::clean - Cleans project
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

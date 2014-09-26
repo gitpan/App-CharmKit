@@ -1,13 +1,10 @@
 package App::CharmKit::Command::test;
-$App::CharmKit::Command::test::VERSION = '0.008';
+$App::CharmKit::Command::test::VERSION = '0.009';
 # ABSTRACT: Test your charm project
 
 
+use parent 'App::CharmKit::Role::Pack';
 use App::CharmKit -command;
-use Moo;
-with('App::CharmKit::Role::Pack');
-
-use namespace::clean;
 
 sub opt_spec {
     return (
@@ -24,7 +21,7 @@ sub execute {
     if ($opt->{rebuild}) {
         $self->build;
     }
-    my $cmd = "prove -v tests/*.test";
+    my $cmd = "prove -lv tests/*.test";
     system($cmd);
 }
 
@@ -42,7 +39,7 @@ App::CharmKit::Command::test - Test your charm project
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

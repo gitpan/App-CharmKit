@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.008';
+$charm::VERSION = '0.009';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -70,7 +70,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

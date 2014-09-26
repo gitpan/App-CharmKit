@@ -1,18 +1,17 @@
 package App::CharmKit::Command::init;
-$App::CharmKit::Command::init::VERSION = '0.008';
+$App::CharmKit::Command::init::VERSION = '0.009';
 # ABSTRACT: Generate a charm project
 
 
 
+use strict;
+use warnings;
 use Path::Tiny;
 use File::chdir;
 use IO::Prompter [-verb];
 use App::CharmKit -command;
 
-use Moo;
-with 'App::CharmKit::Role::Init', 'App::CharmKit::Role::Generate';
-
-use namespace::clean;
+use parent 'App::CharmKit::Role::Init', 'App::CharmKit::Role::Generate';
 
 sub opt_spec {
     return (
@@ -108,7 +107,7 @@ App::CharmKit::Command::init - Generate a charm project
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

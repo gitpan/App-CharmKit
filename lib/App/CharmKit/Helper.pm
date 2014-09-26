@@ -1,5 +1,5 @@
 package App::CharmKit::Helper;
-$App::CharmKit::Helper::VERSION = '0.008';
+$App::CharmKit::Helper::VERSION = '0.009';
 # ABSTRACT: charm helpers
 
 
@@ -15,10 +15,17 @@ our @EXPORT = qw/config_get
   relation_get
   relation_set
   relation_list
-  service_control
+  relation_type
+  relation_id
+  local_unit
+  remote_unit
+  service_name
+  hook_name
+  in_relation_hook
   open_port
   close_port
   unit_get
+  unit_private_ip
   json
   yaml
   tmpl
@@ -32,13 +39,6 @@ sub tmpl { Text::MicroTemplate->new(@_); }
 
 sub http { HTTP::Tiny->new; }
 
-sub service_control {
-    my $service_name = shift;
-    my $action       = shift;
-    my $cmd          = ['service', $service_name, $action];
-    my $ret          = execute($cmd);
-    return $ret->{stdout};
-}
 
 sub config_get {
     my ($key) = @_;
@@ -104,6 +104,12 @@ sub unit_get {
   return $ret->{stdout};
 }
 
+
+
+sub unit_private_ip {
+    return unit_get('private-address');
+}
+
 sub open_port {
     my $port     = shift;
     my $protocol = shift || 'TCP';
@@ -119,6 +125,42 @@ sub close_port {
     my $ret      = execute($cmd);
     return $ret->{stdout};
 }
+
+
+sub in_relation_hook {
+    return defined($ENV{'JUJU_RELATION'});
+}
+
+
+sub relation_type {
+    return $ENV{'JUJU_RELATION'} || undef;
+}
+
+
+sub relation_id {
+    return $ENV{'JUJU_RELATION_ID'} || undef;
+}
+
+
+sub local_unit {
+    return $ENV{'JUJU_UNIT_NAME'} || undef;
+}
+
+
+sub remote_unit {
+    return $ENV{'JUJU_REMOTE_UNIT'} || undef;
+}
+
+
+sub service_name {
+    return (split /\//, local_unit())[0];
+}
+
+
+sub hook_name {
+    return $0;
+}
+
 1;
 
 __END__
@@ -133,7 +175,7 @@ App::CharmKit::Helper - charm helpers
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
@@ -155,23 +197,19 @@ Charm helpers for composition
 
 =head2 json
 
-Wrapper for JSON::PP
+Wrapper for L<JSON::PP>
 
 =head2 yaml
 
-Wrapper for YAML::Tiny
+Wrapper for L<YAML::Tiny>
 
 =head2 tmpl
 
-Wrapper for Text::MicroTemplate
+Wrapper for L<Text::MicroTemplate>
 
 =head2 http
 
-Wrapper for HTTP::Tiny
-
-=head2 service_control(STR service_name, STR action)
-
-Controls a upstart service
+Wrapper for L<HTTP::Tiny>
 
 =head2 config_get(STR option)
 
@@ -197,6 +235,10 @@ Relation list
 
 Get unit information
 
+=head2 unit_private_ip
+
+Get units private ip
+
 =head2 open_port(INT port, STR protocol)
 
 Open port on service
@@ -204,6 +246,34 @@ Open port on service
 =head2 close_port(INT port, STR protocol)
 
 Close port on service
+
+=head2 in_relation_hook
+
+Determine if we're in relation hook
+
+=head2 relation_type
+
+scope for current relation
+
+=head2 relation_id
+
+relation id for current relation hook
+
+=head2 local_unit
+
+local unit id
+
+=head2 remote unit
+
+remote unit for current relation hook
+
+=head2 service_name
+
+name of service running unit belongs too
+
+=head2 hook_name
+
+name of running hook
 
 =head1 AUTHOR
 

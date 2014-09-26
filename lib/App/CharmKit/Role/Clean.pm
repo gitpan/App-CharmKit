@@ -1,8 +1,10 @@
 package App::CharmKit::Role::Clean;
-$App::CharmKit::Role::Clean::VERSION = '0.008';
+$App::CharmKit::Role::Clean::VERSION = '0.009';
 # ABSTRACT: Project cleaner role
 
-use Moo::Role;
+use strict;
+use warnings;
+use Class::Tiny;
 
 sub clean {
     my ($self, $files) = @_;
@@ -23,7 +25,7 @@ App::CharmKit::Role::Clean - Project cleaner role
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 METHODS
 

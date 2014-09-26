@@ -1,12 +1,12 @@
 package App::CharmKit::Command::lint;
-$App::CharmKit::Command::lint::VERSION = '0.008';
+$App::CharmKit::Command::lint::VERSION = '0.009';
 # ABSTRACT: Charm Linter
 
 
+use strict;
+use warnings;
 use App::CharmKit -command;
-use Moo;
-with 'App::CharmKit::Role::Lint';
-use namespace::clean;
+use parent 'App::CharmKit::Role::Lint';
 
 sub opt_spec {
     return ();
@@ -34,7 +34,7 @@ App::CharmKit::Command::lint - Charm Linter
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

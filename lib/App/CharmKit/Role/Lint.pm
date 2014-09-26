@@ -1,71 +1,55 @@
 package App::CharmKit::Role::Lint;
-$App::CharmKit::Role::Lint::VERSION = '0.008';
+$App::CharmKit::Role::Lint::VERSION = '0.009';
 # ABSTRACT: charm linter
 
-use DDP;
+use strict;
+use warnings;
 use YAML::Tiny;
 use Path::Tiny;
 use File::ShareDir qw(dist_file);
-use Moo::Role;
 
-
-has errors => (
-    is      => 'ro',
-    default => sub {
-        {   ERR_INVALID_COPYRIGHT => {
-                message => 'Copyright is malformed or missing',
-                level   => 'WARNING'
-            },
-            ERR_REQUIRED_CONFIG_ITEM => {
-                message => 'Missing required configuration item',
-                level   => 'FATAL'
-            },
-            ERR_CONFIG_ITEM => {
-                message => 'Missing optional configuration item',
-                level   => 'WARNING'
-            },
-            ERR_NO_REQUIRES => {
-                message => 'No requires set for charm relations',
-                level   => 'WARNING'
-            },
-            ERR_NO_PROVIDES => {
-                message => 'No provides set for charm relations',
-                level   => 'WARNING'
-            },
-            ERR_NO_PEERS => {
-                message => 'No peers set for charm relations',
-                level   => 'INFO'
-            },
-            ERR_NO_SUBORDINATES => {
-                message => 'No subordinates set for charm relations',
-                level   => 'INFO'
-            },
-            ERR_EXISTS => {
-                message => 'File does not exist',
-                level   => 'FATAL'
-            },
-            ERR_EMPTY => {
-                message => 'File is empty',
-                level   => 'FATAL'
-            }
-        };
-    }
-);
-
-
-
-has rules => (
-    is      => 'ro',
-    default => sub {
-        YAML::Tiny->read(dist_file('App-CharmKit', 'lint_rules.yaml'));
-    }
-);
-
-has has_error => (
-    is      => 'rw',
-    lazy    => 1,
-    default => 0
-);
+use Class::Tiny {
+    errors => {
+        ERR_INVALID_COPYRIGHT => {
+            message => 'Copyright is malformed or missing',
+            level   => 'WARNING'
+        },
+        ERR_REQUIRED_CONFIG_ITEM => {
+            message => 'Missing required configuration item',
+            level   => 'FATAL'
+        },
+        ERR_CONFIG_ITEM => {
+            message => 'Missing optional configuration item',
+            level   => 'WARNING'
+        },
+        ERR_NO_REQUIRES => {
+            message => 'No requires set for charm relations',
+            level   => 'WARNING'
+        },
+        ERR_NO_PROVIDES => {
+            message => 'No provides set for charm relations',
+            level   => 'WARNING'
+        },
+        ERR_NO_PEERS => {
+            message => 'No peers set for charm relations',
+            level   => 'INFO'
+        },
+        ERR_NO_SUBORDINATES => {
+            message => 'No subordinates set for charm relations',
+            level   => 'INFO'
+        },
+        ERR_EXISTS => {
+            message => 'File does not exist',
+            level   => 'FATAL'
+        },
+        ERR_EMPTY => {
+            message => 'File is empty',
+            level   => 'FATAL'
+        }
+    },
+    rules => YAML::Tiny->read(dist_file('App-CharmKit', 'lint_rules.yaml')),
+    has_error => 0
+};
 
 sub parse {
     my ($self) = @_;
@@ -77,6 +61,8 @@ sub parse {
     }
 }
 
+
+
 sub validate {
     my ($self, $filemeta) = @_;
     my $filepath = path($filemeta->{name});
@@ -85,8 +71,18 @@ sub validate {
         if ($attr =~ /NOT_EMPTY/ && -z $name) {
             $self->check_error($name, 'ERR_EMPTY');
         }
-        if ($attr =~ /EXISTS/ && !$filepath->exists) {
-            $self->check_error($name, 'ERR_EXISTS');
+        if ($attr =~ /EXISTS/) {
+
+            # Verify any file aliases
+            my $alias_exists = 0;
+            foreach my $alias (@{$filemeta->{aliases}}) {
+                next unless path($alias)->exists;
+                $alias_exists = 1;
+            }
+            if (!$alias_exists) {
+                $self->check_error($name, 'ERR_EXISTS')
+                  unless $filepath->exists;
+            }
         }
     }
 
@@ -134,7 +130,7 @@ App::CharmKit::Role::Lint - charm linter
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 

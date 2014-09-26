@@ -1,13 +1,15 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.008';
+$App::CharmKit::Role::Init::VERSION = '0.009';
 # ABSTRACT: Initialization of new charms
 
+use strict;
+use warnings;
 use App::CharmKit::Sys qw(execute);
 use YAML::Tiny;
 use JSON::PP;
 use Software::License;
 use Module::Runtime qw(use_module);
-use Moo::Role;
+use Class::Tiny;
 
 sub init {
     my ($self, $path, $project) = @_;
@@ -120,7 +122,7 @@ Made with [CharmKit](https://github.com/battlemidget/App-CharmKit)
 ### With CharmKit
 
 ```console
-> charmkit get <github-user>/$project->{name}
+> charmkit clone <github-user>/$project->{name}
 > charmkit deploy <charm>
 ```
 
@@ -203,7 +205,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 METHODS
 

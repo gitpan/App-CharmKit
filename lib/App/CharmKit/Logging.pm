@@ -1,5 +1,5 @@
 package App::CharmKit::Logging;
-$App::CharmKit::Logging::VERSION = '0.008';
+$App::CharmKit::Logging::VERSION = '0.009';
 # ABSTRACT: reporting utilities
 
 
@@ -10,7 +10,14 @@ our @EXPORT = qw/log/;
 
 sub log {
     my $message = shift;
-    execute(['juju-log', $message]);
+    my $level = shift || undef;
+    my $cmd = ['juju-log'];
+    if ($level) {
+      push @{$cmd}, '-l';
+      push @{$cmd}, $level;
+    }
+    push @{$cmd}, $message;
+    execute($cmd);
 }
 
 1;
@@ -27,7 +34,7 @@ App::CharmKit::Logging - reporting utilities
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
@@ -47,7 +54,7 @@ Reporting utilities
 
 =head1 FUNCTIONS
 
-=head2 log(STR message)
+=head2 log(STR message, STR level)
 
 Utilizies juju-log for any additional logging
 
