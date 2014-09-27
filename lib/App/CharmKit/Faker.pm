@@ -1,15 +1,14 @@
-package App::CharmKit::Role::Clean;
-$App::CharmKit::Role::Clean::VERSION = '0.011';
-# ABSTRACT: Project cleaner role
+package App::CharmKit::Faker;
+$App::CharmKit::Faker::VERSION = '0.011';
+# ABSTRACT: data faker utilities
 
-use strict;
-use warnings;
-use Class::Tiny;
 
-sub clean {
-    my ($self, $files) = @_;
-    map { -f $_ ? $_->remove : $_->remove_tree } @{$files};
-}
+use Data::Faker;
+use Exporter qw/import/;
+
+our @EXPORT = qw/faker/;
+
+sub faker { Data::Faker->new(@_); }
 
 1;
 
@@ -21,17 +20,34 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Role::Clean - Project cleaner role
+App::CharmKit::Faker - data faker utilities
 
 =head1 VERSION
 
 version 0.011
 
-=head1 METHODS
+=head1 SYNOPSIS
 
-=head2 clean(ARRAYREF [Path::Tiny files])
+Directly,
 
-Cleans up files.
+  use App::CharmKit::Faker;
+
+Or sugar,
+
+  use charm;
+
+  log 'this is a fake company'. faker->company;
+  log 'this is a random ip4'. faker->ip_address;
+
+=head1 DESCRIPTION
+
+Data faker utilities for generating fake data
+
+=head1 FUNCTIONS
+
+=head2 faker
+
+Wrapper for L<Data::Faker>
 
 =head1 AUTHOR
 

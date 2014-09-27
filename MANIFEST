@@ -17,6 +17,7 @@ lib/App/CharmKit/Command/init.pm
 lib/App/CharmKit/Command/lint.pm
 lib/App/CharmKit/Command/pack.pm
 lib/App/CharmKit/Command/test.pm
+lib/App/CharmKit/Faker.pm
 lib/App/CharmKit/Helper.pm
 lib/App/CharmKit/Logging.pm
 lib/App/CharmKit/Manual.pod

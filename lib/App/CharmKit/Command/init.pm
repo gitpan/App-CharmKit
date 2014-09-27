@@ -1,5 +1,5 @@
 package App::CharmKit::Command::init;
-$App::CharmKit::Command::init::VERSION = '0.010';
+$App::CharmKit::Command::init::VERSION = '0.011';
 # ABSTRACT: Generate a charm project
 
 
@@ -107,7 +107,7 @@ App::CharmKit::Command::init - Generate a charm project
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 

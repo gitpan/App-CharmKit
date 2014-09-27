@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '0.010';
+$App::CharmKit::Role::Generate::VERSION = '0.011';
 # ABSTRACT: Generators for common tasks
 
 use strict;
@@ -54,7 +54,7 @@ App::CharmKit::Role::Generate - Generators for common tasks
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 ATTRIBUTES
 

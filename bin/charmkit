@@ -22,7 +22,23 @@ charmkit - charmkit - author charms
 
 =head1 VERSION
 
-version 0.010
+version 0.011
+
+=head1 SYNOPSIS
+
+  Available commands:
+
+    commands: list the application's commands
+        help: display a command's help screen
+
+       clean: Cleans project
+       clone: Clone charm from github
+    generate: Generator for hook composition
+         get: Download a charm
+        init: Generate a charm project
+        lint: Charm Linter
+        pack: Package hooks for distribution
+        test: Test your charm project
 
 =head1 DESCRIPTION
 

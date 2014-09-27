@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.010';
+$charm::VERSION = '0.011';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -47,6 +47,10 @@ sub import {
     require 'App/CharmKit/Sys.pm';
     'App::CharmKit::Sys'->import::into($target);
 
+    # data faker utilities
+    require 'App/CharmKit/Faker.pm';
+    'App::CharmKit::Faker'->import::into($target);
+
     # expose charm helpers by default
     require 'App/CharmKit/Helper.pm';
     'App::CharmKit::Helper'->import::into($target);
@@ -70,7 +74,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 

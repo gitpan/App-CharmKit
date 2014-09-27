@@ -1,5 +1,5 @@
 package App::CharmKit::Command::generate;
-$App::CharmKit::Command::generate::VERSION = '0.010';
+$App::CharmKit::Command::generate::VERSION = '0.011';
 # ABSTRACT: Generator for hook composition
 
 
@@ -54,7 +54,7 @@ App::CharmKit::Command::generate - Generator for hook composition
 
 =head1 VERSION
 
-version 0.010
+version 0.011
 
 =head1 SYNOPSIS
 
