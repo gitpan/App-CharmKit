@@ -13,7 +13,7 @@ App::CharmKit::Manual::WritingHooks - How to write hooks using CharmKit
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 Creating a hook
 

@@ -1,5 +1,5 @@
 package App::CharmKit::Command::clean;
-$App::CharmKit::Command::clean::VERSION = '0.013';
+$App::CharmKit::Command::clean::VERSION = '0.014';
 # ABSTRACT: Cleans project
 
 use strict;
@@ -43,7 +43,7 @@ App::CharmKit::Command::clean - Cleans project
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 

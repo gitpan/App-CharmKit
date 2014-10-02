@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.013';
+$charm::VERSION = '0.014';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -7,6 +7,7 @@ $charm::VERSION = '0.013';
 use strict;
 use utf8::all;
 use warnings;
+use boolean;
 use Import::Into;
 
 use feature ();
@@ -37,6 +38,7 @@ sub import {
     'autodie'->import::into($target, ':all');
     'feature'->import::into($target, ':5.14');
     'English'->import::into($target, '-no_match_vars');
+    'boolean'->import::into($target, ':all');
     Path::Tiny->import::into($target, qw(path));
 
     if ($flags{tester}) {
@@ -74,7 +76,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -136,6 +138,10 @@ L<autodie>
 =item *
 
 L<utf8::all>
+
+=item *
+
+L<boolean>
 
 =back
 

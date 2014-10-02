@@ -3,8 +3,34 @@ Changes from 2013-10-02 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 0.013 at 2014-10-02 03:04:29 +0000
+version 0.014 at 2014-10-02 20:48:53 +0000
 ------------------------------------------
+
+  Change: 8c3a6d6ddb3dda435d713e39083ab8b84e008c04
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-02 16:48:33 +0000
+
+    add boolean imports
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 362e2aa7dbe77cf0df2b5bf2ec8e8a4e7e2c697f
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-02 16:48:27 +0000
+
+    more linter patterns
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+------------------------------------------
+version 0.013 at 2014-10-02 03:04:40 +0000
+------------------------------------------
+
+  Change: 26ff198cf67a3862485b7e591183158a308f814c
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-01 23:04:40 +0000
+
+    v0.013 
 
   Change: 2be864f6562eaa50b0e5ec7b7a0b10a1c43abe13
   Author: Adam Stokes <adam.stokes@ubuntu.com>
