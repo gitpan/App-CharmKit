@@ -1,5 +1,7 @@
 requires "App::Cmd::Setup" => "0";
 requires "Class::Tiny" => "0";
+requires "DDP" => "0";
+requires "Data::Dumper" => "0";
 requires "Data::Faker" => "0";
 requires "Exporter" => "0";
 requires "File::ShareDir" => "0";
@@ -28,6 +30,7 @@ on 'test' => sub {
   requires "FindBin" => "0";
   requires "IPC::System::Simple" => "0";
   requires "Pod::Elemental::Transformer::List" => "0";
+  requires "Pod::Weaver::Plugin::Encoding" => "0";
   requires "Software::License" => "0";
   requires "Test::More" => "0";
   requires "autodie" => "0";

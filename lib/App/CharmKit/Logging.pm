@@ -1,12 +1,13 @@
 package App::CharmKit::Logging;
-$App::CharmKit::Logging::VERSION = '0.011';
+$App::CharmKit::Logging::VERSION = '0.013';
 # ABSTRACT: reporting utilities
 
 
+use Data::Dumper;
 use App::CharmKit::Sys qw/execute/;
 use Exporter qw/import/;
 
-our @EXPORT = qw/log/;
+our @EXPORT = qw/log prettyLog/;
 
 sub log {
     my $message = shift;
@@ -18,6 +19,11 @@ sub log {
     }
     push @{$cmd}, $message;
     execute($cmd);
+}
+
+sub prettyLog {
+    my $obj = shift;
+    print Dumper($obj);
 }
 
 1;
@@ -34,7 +40,7 @@ App::CharmKit::Logging - reporting utilities
 
 =head1 VERSION
 
-version 0.011
+version 0.013
 
 =head1 SYNOPSIS
 
@@ -57,6 +63,10 @@ Reporting utilities
 =head2 log(STR message, STR level)
 
 Utilizies juju-log for any additional logging
+
+=head2 prettyLog(object)
+
+Dumps the perl data structure into something readable
 
 =head1 AUTHOR
 

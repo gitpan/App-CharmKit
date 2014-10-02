@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.011';
+$App::CharmKit::Role::Init::VERSION = '0.013';
 # ABSTRACT: Initialization of new charms
 
 use strict;
@@ -137,7 +137,7 @@ Made with [CharmKit](https://github.com/battlemidget/App-CharmKit)
 #### Source
 
 ```console
-> mkdir -p ~/charms && git clone https://github.com/<github-user>/$project->{name}
+> mkdir -p ~/charms && git clone https://github.com/<github-user>/$project->{name} ~/charms/
 > juju deploy --repository=charms local:<series>/$project->{name}
 ```
 
@@ -205,7 +205,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.011
+version 0.013
 
 =head1 METHODS
 

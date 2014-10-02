@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.011';
+$App::CharmKit::Sys::VERSION = '0.013';
 # ABSTRACT: system utilities
 
 
@@ -123,7 +123,6 @@ sub apt_install {
     my $cmd = ['apt-get', '-qyf', 'install'];
     map { push @{$cmd}, $_ } @{$pkgs};
     my $ret = execute($cmd);
-    die $! unless $ret->{error} > 0;
     return $ret->{stdout};
 }
 
@@ -171,7 +170,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.011
+version 0.013
 
 =head1 SYNOPSIS
 

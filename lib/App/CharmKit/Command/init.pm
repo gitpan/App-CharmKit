@@ -1,5 +1,5 @@
 package App::CharmKit::Command::init;
-$App::CharmKit::Command::init::VERSION = '0.011';
+$App::CharmKit::Command::init::VERSION = '0.013';
 # ABSTRACT: Generate a charm project
 
 
@@ -52,7 +52,7 @@ sub execute {
     }
     printf("Initializing project %s\n", $path->absolute);
 
-    my $default_maintainer = 'Joe Hacker';
+    my $default_maintainer = 'Joe Hacker <joe.hacker@mail.com>';
     my $default_category   = $opt->{category};
     @ARGV = ();    # IO::Prompter workaround
     $project->{name} = prompt "Name [default $path]:", -def => "$path";
@@ -107,7 +107,7 @@ App::CharmKit::Command::init - Generate a charm project
 
 =head1 VERSION
 
-version 0.011
+version 0.013
 
 =head1 SYNOPSIS
 
