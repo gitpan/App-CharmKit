@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.014';
+$charm::VERSION = '0.015';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -23,6 +23,7 @@ if ($INC{"App/FatPacker/Trace.pm"}) {
     require YAML::Tiny;
     require IPC::Run;
     require Text::MicroTemplate;
+    require Set::Tiny;
 }
 
 sub import {
@@ -76,7 +77,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 SYNOPSIS
 

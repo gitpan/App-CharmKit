@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.014';
+$App::CharmKit::Role::Init::VERSION = '0.015';
 # ABSTRACT: Initialization of new charms
 
 use strict;
@@ -83,7 +83,6 @@ done_testing;
             description => $project->{description},
             maintainer  => $project->{maintainer},
             categories  => $project->{categories},
-            license     => $project->{license}
         }
     );
     $yaml->write($path->child('metadata.yaml'));
@@ -138,7 +137,7 @@ Made with [CharmKit](https://github.com/battlemidget/App-CharmKit)
 
 ```console
 > mkdir -p ~/charms && git clone https://github.com/<github-user>/$project->{name} ~/charms/
-> juju deploy --repository=charms local:<series>/$project->{name}
+> juju deploy --repository=charms local:trusty/$project->{name}
 ```
 
 # AUTHOR
@@ -169,7 +168,21 @@ ensure_ck:
 		libapp-fatpacker-perl \
 		libipc-system-simple-perl \
 		libsoftware-license-perl \
-		libautodie-perl
+		libautodie-perl \
+		libemail-address-perl \
+		libset-tiny-perl \
+		libfile-sharedir-perl \
+		libboolean-perl \
+		libjson-pp-perl \
+		libyaml-tiny-perl \
+		libtext-microtemplate-perl \
+		libipc-run-perl \
+		libpath-tiny-perl \
+		libimport-into-perl \
+		libhttp-tiny-perl \
+		libapp-cmd-perl \
+		libdata-dumper-perl
+		libdata-faker-perl
 	@cpanm App::CharmKit --notest
 
 pack:
@@ -205,7 +218,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.014
+version 0.015
 
 =head1 METHODS
 
