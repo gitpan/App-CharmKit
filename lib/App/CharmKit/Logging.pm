@@ -1,8 +1,9 @@
 package App::CharmKit::Logging;
-$App::CharmKit::Logging::VERSION = '0.015';
+$App::CharmKit::Logging::VERSION = '0.016';
 # ABSTRACT: reporting utilities
 
-
+use strict;
+use warnings;
 use Data::Dumper;
 use App::CharmKit::Sys qw/execute/;
 use Exporter qw/import/;
@@ -40,7 +41,7 @@ App::CharmKit::Logging - reporting utilities
 
 =head1 VERSION
 
-version 0.015
+version 0.016
 
 =head1 SYNOPSIS
 

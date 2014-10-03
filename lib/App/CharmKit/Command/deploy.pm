@@ -1,30 +1,35 @@
-package App::CharmKit::Command::test;
-$App::CharmKit::Command::test::VERSION = '0.016';
-# ABSTRACT: Test your charm project
+package App::CharmKit::Command::deploy;
+$App::CharmKit::Command::deploy::VERSION = '0.016';
+# ABSTRACT: Deploy charm
 
 
 use strict;
 use warnings;
-use parent 'App::CharmKit::Role::Pack';
 use App::CharmKit -command;
 
 sub opt_spec {
     return (
-        [   "rebuild|r",
-            "force a re-pack of charm project before running tests"
+        [   "charmdir|c=s",
+            "Location of toplevel charm directory, used in local charm deploys"
         ]
     );
 }
 
-sub usage_desc {'%c test [-r]'}
+sub usage_desc {
+    "charmkit deploy git\@github.com:battlemidget/charm.git -c ~/charms";
+}
+
+sub validate_args {
+    my ($self, $opt, $args) = @_;
+    $self->usage_error("Needs a charm path")
+      unless $args->[0];
+    $self->usage_error("No toplevel charm directory found")
+      unless $opt->{charmdir};
+}
 
 sub execute {
     my ($self, $opt, $args) = @_;
-    if ($opt->{rebuild}) {
-        $self->build;
-    }
-    my $cmd = "prove -lv tests/*.test";
-    system($cmd);
+    print("poof.\n");
 }
 
 1;
@@ -37,7 +42,7 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Command::test - Test your charm project
+App::CharmKit::Command::deploy - Deploy charm
 
 =head1 VERSION
 
@@ -45,12 +50,11 @@ version 0.016
 
 =head1 SYNOPSIS
 
-  $ charmkit test
+  $ charmkit deploy (git|http|file)://charm-path(.git|.tar.gz)
 
 =head1 DESCRIPTION
 
-Runs tests against packaged charm project, useful during iterative testing
-against local juju deployments.
+Deploys a charm, accepts locations such as git, http, and local file directories
 
 =head1 AUTHOR
 

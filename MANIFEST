@@ -12,6 +12,7 @@ dist.ini
 lib/App/CharmKit.pm
 lib/App/CharmKit/Command/clean.pm
 lib/App/CharmKit/Command/clone.pm
+lib/App/CharmKit/Command/deploy.pm
 lib/App/CharmKit/Command/generate.pm
 lib/App/CharmKit/Command/init.pm
 lib/App/CharmKit/Command/lint.pm

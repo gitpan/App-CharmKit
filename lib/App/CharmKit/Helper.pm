@@ -1,8 +1,10 @@
 package App::CharmKit::Helper;
-$App::CharmKit::Helper::VERSION = '0.015';
+$App::CharmKit::Helper::VERSION = '0.016';
 # ABSTRACT: charm helpers
 
 
+use strict;
+use warnings;
 use App::CharmKit::Sys qw/execute/;
 use HTTP::Tiny;
 use YAML::Tiny;
@@ -175,7 +177,7 @@ App::CharmKit::Helper - charm helpers
 
 =head1 VERSION
 
-version 0.015
+version 0.016
 
 =head1 SYNOPSIS
 
