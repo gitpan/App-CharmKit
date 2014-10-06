@@ -1,5 +1,5 @@
 package App::CharmKit::Faker;
-$App::CharmKit::Faker::VERSION = '0.016';
+$App::CharmKit::Faker::VERSION = '0.017';
 # ABSTRACT: data faker utilities
 
 
@@ -26,7 +26,7 @@ App::CharmKit::Faker - data faker utilities
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 

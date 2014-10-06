@@ -13,7 +13,7 @@ App::CharmKit::Manual::GettingStarted - Getting started with CharmKit
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 Getting Started
 

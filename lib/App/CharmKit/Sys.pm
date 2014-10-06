@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.016';
+$App::CharmKit::Sys::VERSION = '0.017';
 # ABSTRACT: system utilities
 
 
@@ -7,7 +7,8 @@ use strict;
 use warnings;
 use Path::Tiny;
 use IPC::Run qw(run timeout);
-use Exporter qw(import);
+use English;
+use base "Exporter::Tiny";
 
 our @EXPORT = qw/execute
   apt_install
@@ -17,11 +18,11 @@ our @EXPORT = qw/execute
   make_dir
   remove_dir
   set_owner
+  getent
   add_user
   del_user
   spew
   slurp
-  getent
   service_control
   service_status/;
 
@@ -58,10 +59,18 @@ sub set_owner {
     }
 }
 
+
+
 sub getent {
     my ($db, $key) = @_;
-    my $ret = execute(['getent', $db, $key]);
-    return $ret;
+    if ($OSNAME eq 'linux') {
+        my $ret = execute(['getent', $db, $key]);
+        return $ret;
+    }
+    else {
+        print "Unsupported OS\n.";
+        return 0;
+    }
 }
 
 sub add_user {
@@ -170,7 +179,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.016
+version 0.017
 
 =head1 SYNOPSIS
 
