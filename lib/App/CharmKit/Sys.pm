@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.017';
+$App::CharmKit::Sys::VERSION = '0.18';
 # ABSTRACT: system utilities
 
 
@@ -179,7 +179,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 SYNOPSIS
 
@@ -199,29 +199,29 @@ Provides system utilities such as installing packages, managing files, and more.
 
 =head1 FUNCTIONS
 
-=head2 spew(STR path, STR contents)
+=head2 spew
 
 writes to a file, defaults to utf8
 
-=head2 slurp(STR path)
+=head2 slurp
 
 reads a file, defaults to utf8
 
-=head2 make_dir(ARRAYREF dirs)
+=head2 make_dir
 
 mkdir helper for creating directories
 
-=head2 remove_dir(ARRAYREF dirs)
+=head2 remove_dir
 
 removes directories
 
-=head2 set_owner(STR user, ARRAYREF dirs)
+=head2 set_owner
 
 sets owner of directories
 
   set_owner('ubuntu', ['/var/lib/mydb', '/etc/mydb/conf'])
 
-=head2 getent(STR db, STR key)
+=head2 getent
 
 accesses user info from nss
 
@@ -243,7 +243,7 @@ returns: result from C<execute>
 
 =back
 
-=head2 add_user(STR user, STR homedir)
+=head2 add_user
 
 adds user to system
 
@@ -265,11 +265,11 @@ returns: result from C<execute>
 
 =back
 
-=head2 del_user(STR user)
+=head2 del_user
 
 removes a user, does attempt to remove home directory
 
-=head2 execute(ARRAYREF command)
+=head2 execute
 
 Executes a local command:
 
@@ -291,7 +291,7 @@ returns: hash of { stdout =>, stderr =>, has_error =>, error => }
 
 =back
 
-=head2 apt_add_repo(STR repo, STR key, BOOL update)
+=head2 apt_add_repo
 
 Adds a archive repository or ppa. B<key> is required if adding http source.
 
@@ -300,29 +300,29 @@ B<source> can be in the format of:
   ppa:charmers/example
   deb https://stub:key@private.example.com/ubuntu trusty main
 
-=head2 apt_install(ARRAYREF pkgs)
+=head2 apt_install
 
 Installs packages via apt-get
 
    apt_install(['nginx']);
 
-=head2 apt_upgrade()
+=head2 apt_upgrade
 
 Upgrades system
 
    apt_upgrade();
 
-=head2 apt_update()
+=head2 apt_update
 
 Update repository sources
 
    apt_update();
 
-=head2 service_control(STR service_name, STR action)
+=head2 service_control
 
 Controls a upstart service
 
-=head2 service_status(STR service_nae)
+=head2 service_status
 
 Get running status of service
 

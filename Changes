@@ -1,10 +1,56 @@
 ==================================================
-Changes from 2013-10-06 00:00:00 +0000 to present.
+Changes from 2013-10-08 00:00:00 +0000 to present.
 ==================================================
 
+-----------------------------------------
+version 0.18 at 2014-10-08 02:29:47 +0000
+-----------------------------------------
+
+  Change: 19b4467c52f46d4def4ee6683fbda1ddbcbd825b
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-07 22:29:42 +0000
+
+    Clone/Deploy updates and documentation modifications
+
+    Updated clone to support git endpoints in addition to github Updated
+    deploy to support Juju local charm repository Updated pods for
+    various functions Updated GettingStarted manual
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 3b9e1f2bfc5162eb38b6a21c6571407be2e3f490
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-06 13:33:47 +0000
+
+    only validate hook mode if exists
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 08fa6ab90532e92a51d2a94f96a6f7dc0f68107a
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-06 13:25:46 +0000
+
+    use exporter::tiny
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: ec8f2185b6382f55c125c816d82bdafd2974d16a
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-06 13:25:30 +0000
+
+    use Exporter::Tiny
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
 ------------------------------------------
-version 0.017 at 2014-10-06 17:22:01 +0000
+version 0.017 at 2014-10-06 17:22:08 +0000
 ------------------------------------------
+
+  Change: 0f3d171af50336725083e26716f61d1ba33f55ab
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-06 13:22:08 +0000
+
+    v0.017 
 
   Change: 8899f815fe0c090e341ab287624af77c763a69c3
   Author: Adam Stokes <adam.stokes@ubuntu.com>

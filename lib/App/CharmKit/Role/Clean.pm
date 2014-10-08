@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Clean;
-$App::CharmKit::Role::Clean::VERSION = '0.017';
+$App::CharmKit::Role::Clean::VERSION = '0.18';
 # ABSTRACT: Project cleaner role
 
 use strict;
@@ -25,11 +25,11 @@ App::CharmKit::Role::Clean - Project cleaner role
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 METHODS
 
-=head2 clean(ARRAYREF [Path::Tiny files])
+=head2 clean
 
 Cleans up files.
 

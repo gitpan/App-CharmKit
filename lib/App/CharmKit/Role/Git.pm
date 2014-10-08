@@ -1,19 +1,30 @@
-package App::CharmKit::Role::GitHub;
-$App::CharmKit::Role::GitHub::VERSION = '0.017';
-# ABSTRACT: Checkout from github
+package App::CharmKit::Role::Git;
+$App::CharmKit::Role::Git::VERSION = '0.18';
+# ABSTRACT: Checkout from git endpoints
 
 use strict;
 use warnings;
 use Path::Tiny;
-use Class::Tiny;
+use Git::Repository;
+use Class::Tiny {
+    github => sub {'git@github.com'}
+};
+
 
 sub clone {
-    my $self = shift;
-    my $location = shift;
-    my $dst = shift || (split /\//, $location)[-1];
-    my $cmd = sprintf("git clone -q git\@github.com:%s.git %s", $location, $dst);
-    `$cmd`;
-    printf("%s cloned to %s\n", $location, $dst);
+    my ($self, $location, $dst) = @_;
+    my $cmd = ['clone', '-q'];
+    if ($location =~ /^\w+\/\w+/) {
+        $location = sprintf("%s:%s.git", $self->github, $location);
+    }
+
+    # Make sure dst exists, if not create the parent directories
+    if (!$dst->exists) {
+        $dst->mkpath;
+    }
+
+    Git::Repository->run(clone => $location, $dst, { quiet => 1 });
+    printf("%s cloned to %s\n", $location, $dst->absolute);
 }
 
 1;
@@ -26,17 +37,17 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Role::GitHub - Checkout from github
+App::CharmKit::Role::Git - Checkout from git endpoints
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 METHODS
 
-=head2 clone(STR location, STR dst)
+=head2 clone
 
-clone repo from github
+clone repo from github or another git endpoint
 
 =head1 AUTHOR
 

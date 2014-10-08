@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.017';
+$App::CharmKit::Role::Init::VERSION = '0.18';
 # ABSTRACT: Initialization of new charms
 
 use strict;
@@ -9,6 +9,7 @@ use YAML::Tiny;
 use JSON::PP;
 use Software::License;
 use Module::Runtime qw(use_module);
+use Git::Repository;
 use Class::Tiny;
 
 sub init {
@@ -46,7 +47,7 @@ perltidy.LOG
 
     # git init
     if (!$path->child('.git')->exists) {
-        execute(['git', 'init', $project->{name}]);
+        Git::Repository->run(init => $project->{name});
     }
 
     # tests/tests.yaml
@@ -121,8 +122,8 @@ Made with [CharmKit](https://github.com/battlemidget/App-CharmKit)
 ### With CharmKit
 
 ```console
-> charmkit clone <github-user>/$project->{name}
-> charmkit deploy <charm>
+> charmkit clone <github-user>/$project->{name} -o ~/charms/<series>/$project->{name}
+> charmkit deploy <charm> -c ~/charms -s <series>
 ```
 
 ### Juju
@@ -130,14 +131,14 @@ Made with [CharmKit](https://github.com/battlemidget/App-CharmKit)
 #### Charm Store
 
 ```console
-> juju deploy cs:trusty/$project->{name}
+> juju deploy cs:<series>/$project->{name}
 ```
 
 #### Source
 
 ```console
 > mkdir -p ~/charms && git clone https://github.com/<github-user>/$project->{name} ~/charms/
-> juju deploy --repository=charms local:trusty/$project->{name}
+> juju deploy --repository=charms local:<series>/$project->{name}
 ```
 
 # AUTHOR
@@ -218,11 +219,11 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 METHODS
 
-=head2 init(Path::Tiny path, HASH project)
+=head2 init
 
 Builds the initialization directory structure for
 charm authoring.

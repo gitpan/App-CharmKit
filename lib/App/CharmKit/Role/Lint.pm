@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Lint;
-$App::CharmKit::Role::Lint::VERSION = '0.017';
+$App::CharmKit::Role::Lint::VERSION = '0.18';
 # ABSTRACT: charm linter
 
 use strict;
@@ -261,7 +261,7 @@ sub validate_hook {
             $self->lint_fatal($name, 'Hook is empty');
         }
     }
-    if (!-x $filepath) {
+    if ($filepath->exists && !-x $filepath) {
         $self->lint_fatal($name, 'Hook is not executable');
     }
 }
@@ -347,7 +347,7 @@ App::CharmKit::Role::Lint - charm linter
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 SYNOPSIS
 
@@ -378,35 +378,35 @@ Parses charm
 
 Does basic sanity checking on tests directory
 
-=head2 validate_configdata(HASHREF configdata)
+=head2 validate_configdata
 
 Validates B<config.yaml>
 
-=head2 validate_metadata(HASHREF metadata)
+=head2 validate_metadata
 
 Validates B<metadata.yaml>
 
-=head2 validate_hook(HASHREF hookmeta)
+=head2 validate_hook
 
 Validates charm hooks
 
-=head2 validate_attributes(HASHREF filemeta)
+=head2 validate_attributes
 
 Performs validation of file based on available attribute
 
-=head2 lint_fatal(STR item, STR message)
+=head2 lint_fatal
 
 Prints a FATAL lint message
 
-=head2 lint_warn(STR item, STR message)
+=head2 lint_warn
 
 Prints a WARNING lint message
 
-=head2 lint_info(STR item, STR message)
+=head2 lint_info
 
 Prints a INFO lint message
 
-=head2 lint_print(STR item, HASHREF error)
+=head2 lint_print
 
 Prints out lint errors
 

@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '0.017';
+$App::CharmKit::Role::Generate::VERSION = '0.18';
 # ABSTRACT: Generators for common tasks
 
 use strict;
@@ -54,7 +54,7 @@ App::CharmKit::Role::Generate - Generators for common tasks
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 ATTRIBUTES
 
@@ -70,12 +70,12 @@ of all hooks.
 
 =head1 METHODS
 
-=head2 create_hook(STR hook)
+=head2 create_hook
 
 Creates a hook file defined by `hook` parameter, also writes out some
 initial starter code to file.
 
-=head2 create_all_hooks()
+=head2 create_all_hooks
 
 Iterates `default_hooks` and creates the necessary hook files.
 

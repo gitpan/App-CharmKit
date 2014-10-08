@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Pack;
-$App::CharmKit::Role::Pack::VERSION = '0.017';
+$App::CharmKit::Role::Pack::VERSION = '0.18';
 # ABSTRACT: Fatpack hooks
 
 use strict;
@@ -15,6 +15,8 @@ use Class::Tiny {
 
 sub build {
     my ($self) = @_;
+    path('hooks')->mkpath unless path('hooks')->exists;
+    path('tests')->mkpath unless path('tests')->exists;
     my ($cmd, $dst);
     my $iter = $self->src->iterator;
     while (my $p = $iter->()) {
@@ -56,7 +58,7 @@ App::CharmKit::Role::Pack - Fatpack hooks
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 ATTRIBUTES
 
@@ -72,7 +74,7 @@ of non fatpacked hooks.
 
 =head1 METHODS
 
-=head2 build()
+=head2 build
 
 Uses fatpack to build the hooks and pulls in any necessary
 perl dependencies for use

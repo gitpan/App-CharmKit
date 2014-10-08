@@ -1,5 +1,5 @@
 package App::CharmKit::Helper;
-$App::CharmKit::Helper::VERSION = '0.017';
+$App::CharmKit::Helper::VERSION = '0.18';
 # ABSTRACT: charm helpers
 
 
@@ -10,7 +10,7 @@ use HTTP::Tiny;
 use YAML::Tiny;
 use JSON::PP;
 use Text::MicroTemplate;
-use Exporter qw/import/;
+use base "Exporter::Tiny";
 
 our @EXPORT = qw/config_get
   relation_ids
@@ -177,7 +177,7 @@ App::CharmKit::Helper - charm helpers
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 SYNOPSIS
 
@@ -213,27 +213,27 @@ Wrapper for L<Text::MicroTemplate>
 
 Wrapper for L<HTTP::Tiny>
 
-=head2 config_get(STR option)
+=head2 config_get
 
 Queries a config option
 
-=head2 relation_get(STR attribute, STR unit, STR rid)
+=head2 relation_get
 
 Gets relation
 
-=head2 relation_set(HASHREF opts)
+=head2 relation_set
 
 Relation set
 
-=head2 relation_ids(STR relation_name)
+=head2 relation_ids
 
 Get relation ids
 
-=head2 relation_list(INT rid)
+=head2 relation_list
 
 Relation list
 
-=head2 unit_get(STR key)
+=head2 unit_get
 
 Get unit information
 
@@ -241,11 +241,11 @@ Get unit information
 
 Get units private ip
 
-=head2 open_port(INT port, STR protocol)
+=head2 open_port
 
 Open port on service
 
-=head2 close_port(INT port, STR protocol)
+=head2 close_port
 
 Close port on service
 

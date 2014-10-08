@@ -1,12 +1,12 @@
 package App::CharmKit::Faker;
-$App::CharmKit::Faker::VERSION = '0.017';
+$App::CharmKit::Faker::VERSION = '0.18';
 # ABSTRACT: data faker utilities
 
 
 use strict;
 use warnings;
 use Data::Faker;
-use Exporter qw/import/;
+use base "Exporter::Tiny";
 
 our @EXPORT = qw/faker/;
 
@@ -26,7 +26,7 @@ App::CharmKit::Faker - data faker utilities
 
 =head1 VERSION
 
-version 0.017
+version 0.18
 
 =head1 SYNOPSIS
 
