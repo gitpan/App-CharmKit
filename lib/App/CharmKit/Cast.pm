@@ -1,31 +1,43 @@
-package App::CharmKit::Role::Git;
-$App::CharmKit::Role::Git::VERSION = '0.19';
-# ABSTRACT: Checkout from git endpoints
+package App::CharmKit::Cast;
+$App::CharmKit::Cast::VERSION = '0.19';
+# ABSTRACT: Wrapper for functional charm testing
+
 
 use strict;
 use warnings;
-use Path::Tiny;
-use Git::Repository;
-use Class::Tiny {
-    github => sub {'git@github.com'}
+use App::CharmKit::Helper;
+use IO::Socket::PortState qw(check_ports);
+use Juju;
+use Class::Tiny qw(endpoint password), {
+    juju => sub {
+        my $self = shift;
+        my $juju =
+          Juju->new(endpoint => $self->endpoint, password => $self->password);
+        return $juju;
+    }
 };
 
-
-sub clone {
-    my ($self, $location, $dst) = @_;
-    my $cmd = ['clone', '-q'];
-    if ($location =~ /^\w+\/\w+/) {
-        $location = sprintf("%s:%s.git", $self->github, $location);
-    }
-
-    # Make sure dst exists, if not create the parent directories
-    if (!$dst->exists) {
-        $dst->mkpath;
-    }
-
-    Git::Repository->run(clone => $location, $dst, { quiet => 1 });
-    printf("%s cloned to %s\n", $location, $dst->absolute);
+sub deploy {
+    my ($self, $charm) = @_;
+    $self->juju->deploy($charm);
 }
+
+sub add_relation {
+    my ($self, $endpointa, $endpointb) = @_;
+    $self->juju->add_relation($endpointa, $endpointb);
+}
+
+sub is_listening {
+    my ($self, $service, $port) = @_;
+
+    my $ip = unit_get($service);
+    my %porthash = (tcp => $port => {name => $service});
+    my $check_port = check_ports($ip, 5, \%porthash);
+    return $check_port->{open};
+}
+
+
+
 
 1;
 
@@ -37,17 +49,44 @@ __END__
 
 =head1 NAME
 
-App::CharmKit::Role::Git - Checkout from git endpoints
+App::CharmKit::Cast - Wrapper for functional charm testing
 
 =head1 VERSION
 
 version 0.19
 
+=head1 SYNOPSIS
+
+Directly,
+
+  use App::CharmKit::Cast qw(cast);
+
+Or sugar,
+
+  use charm -tester -caster;
+
+  my $cast = Cast->new(endpoint => 'wss://localhost:17070', password => 's3cr3t');
+  $cast->deploy('wordpress');
+  $cast->deploy('mysql');
+  $cast->add_relation('wordpress', 'mysql');
+
+=head1 DESCRIPTION
+
+Helper routines for dealing with functional charm testing
+
 =head1 METHODS
 
-=head2 clone
+=head2 deploy
 
-clone repo from github or another git endpoint
+Deploys a charm with default constraints
+
+=head2 add_relation
+
+Add relations between services
+
+=head2 is_listening
+
+Checks if a service is listening on a port
 
 =head1 AUTHOR
 

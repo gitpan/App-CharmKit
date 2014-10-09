@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.18';
+$App::CharmKit::Role::Init::VERSION = '0.19';
 # ABSTRACT: Initialization of new charms
 
 use strict;
@@ -18,6 +18,7 @@ sub init {
     $path->child('tests')->mkpath     or die $!;
     $path->child('src/hooks')->mkpath or die $!;
     $path->child('src/tests')->mkpath or die $!;
+    $path->child('src/unittests')->mkpath or die $!;
 
     # .gitignore
     (   my $gitignore = qq{
@@ -64,7 +65,7 @@ use charm -tester;
 done_testing;
 }
     );
-    $path->child('src/tests/00-basic.test')->spew_utf8($basic_test);
+    $path->child('src/tests/01-deploy.test')->spew_utf8($basic_test);
 
     # charmkit.json
     my $json          = JSON::PP->new->utf8->pretty;
@@ -183,7 +184,8 @@ ensure_ck:
 		libhttp-tiny-perl \
 		libapp-cmd-perl \
 		libdata-dumper-perl
-		libdata-faker-perl
+		libdata-faker-perl \
+		libanyevent-perl
 	@cpanm App::CharmKit --notest
 
 pack:
@@ -219,7 +221,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 METHODS
 

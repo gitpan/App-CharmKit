@@ -1,10 +1,52 @@
 ==================================================
-Changes from 2013-10-08 00:00:00 +0000 to present.
+Changes from 2013-10-09 00:00:00 +0000 to present.
 ==================================================
 
 -----------------------------------------
-version 0.18 at 2014-10-08 02:29:47 +0000
+version 0.19 at 2014-10-09 02:17:17 +0000
 -----------------------------------------
+
+  Change: 5cdeb2b3afd7ca0e93c423b36214c9c9653b17c6
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-08 22:17:04 +0000
+
+    add functional charm testing helpers
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: f5430cad496e17d86e7016b8a70284a327f86224
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-08 21:14:08 +0000
+
+    update test command
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: fdd6ea8f32dbbede533f57dc522f29fc6f7b73f5
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-08 20:55:29 +0000
+
+    allow differentiate against unittest vs charmtest
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 6b918c6033cf132f10b89fdbed1e8f2158df7b0d
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-07 22:49:57 +0000
+
+    Update dist.ini
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+-----------------------------------------
+version 0.18 at 2014-10-08 02:29:57 +0000
+-----------------------------------------
+
+  Change: e6cd57c890dda2d7eb3a5219f9741dade3c88a6f
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-07 22:29:57 +0000
+
+    v0.18 
 
   Change: 19b4467c52f46d4def4ee6683fbda1ddbcbd825b
   Author: Adam Stokes <adam.stokes@ubuntu.com>

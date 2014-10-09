@@ -10,6 +10,7 @@ bin/charmkit
 cpanfile
 dist.ini
 lib/App/CharmKit.pm
+lib/App/CharmKit/Cast.pm
 lib/App/CharmKit/Command/clean.pm
 lib/App/CharmKit/Command/clone.pm
 lib/App/CharmKit/Command/deploy.pm
@@ -33,6 +34,10 @@ lib/App/CharmKit/Role/Pack.pm
 lib/App/CharmKit/Sys.pm
 lib/charm.pm
 share/lint_rules.yaml
+t/00-compile.t
+t/00-report-prereqs.dd
+t/00-report-prereqs.t
 t/00-sugar.t
+t/release-kwalitee.t
 t/release-minimum-version.t
 weaver.ini

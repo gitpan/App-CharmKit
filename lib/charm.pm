@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.18';
+$charm::VERSION = '0.19';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -24,6 +24,7 @@ if ($INC{"App/FatPacker/Trace.pm"}) {
     require IPC::Run;
     require Text::MicroTemplate;
     require Set::Tiny;
+    require Juju;
 }
 
 sub import {
@@ -44,6 +45,12 @@ sub import {
 
     if ($flags{tester}) {
         Test::More->import::into($target);
+    }
+
+    # Include juju capabilities for functional charm testing
+    if ($flags{caster}) {
+        require 'App/CharmKit/Cast.pm';
+        'App::CharmKit::Cast'->import::into($target);
     }
 
     # expose system utilities by default
@@ -77,26 +84,21 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 
   use charm;
+
+  log "Starting install";
+  my $ret = execute(['ls', '/tmp']);
+  print($ret->{stdout});
 
 =head1 DESCRIPTION
 
 Exposing helper subs from various packages that would be useful in writing
 charm hooks. Including but not limited too strict, warnings, utf8, Path::Tiny,
 etc ..
-
-    use App::CharmKit::Sys;
-
-or ..
-
-    use charm -sys;
-    my $ret = execute(['ls', '/tmp']);
-    print($ret->{stdout});
-    log('went to the park');
 
 =head1 MODULES
 
