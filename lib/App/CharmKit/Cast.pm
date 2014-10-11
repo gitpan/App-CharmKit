@@ -1,5 +1,5 @@
 package App::CharmKit::Cast;
-$App::CharmKit::Cast::VERSION = '0.19';
+$App::CharmKit::Cast::VERSION = '0.20';
 # ABSTRACT: Wrapper for functional charm testing
 
 
@@ -8,6 +8,8 @@ use warnings;
 use App::CharmKit::Helper;
 use IO::Socket::PortState qw(check_ports);
 use Juju;
+use Path::Tiny qw(path);
+use YAML::Tiny;
 use Class::Tiny qw(endpoint password), {
     juju => sub {
         my $self = shift;
@@ -16,6 +18,32 @@ use Class::Tiny qw(endpoint password), {
         return $juju;
     }
 };
+
+sub BUILD {
+    my ($self, $args) = @_;
+    $self->get_creds unless $self->endpoint || $self->password;
+}
+
+
+sub get_creds {
+    my ($self)    = @_;
+    my $juju_env  = $ENV{JUJU_ENV};
+    my $juju_home = $ENV{JUJU_HOME};
+
+    die "Unable to determine the running Juju environment"
+      unless defined($juju_env);
+    my $env_file = path($juju_home)->child('environments/$juju_env.jenv');
+    my $env_yaml = YAML::Tiny->read($env_file->abspath);
+    if (defined($env_yaml->{password})) {
+        $self->password($env_yaml->{password});
+    }
+    if (defined($env_yaml->{state_servers})) {
+        $self->endpoint($env_yaml->{state_servers}->[0]);
+    }
+    else {
+        die "Unable to determine api state server";
+    }
+}
 
 sub deploy {
     my ($self, $charm) = @_;
@@ -53,7 +81,7 @@ App::CharmKit::Cast - Wrapper for functional charm testing
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 
@@ -63,9 +91,15 @@ Directly,
 
 Or sugar,
 
-  use charm -tester -caster;
+  use charm -tester;
 
-  my $cast = Cast->new(endpoint => 'wss://localhost:17070', password => 's3cr3t');
+  my $cast = load_helper(
+    'Cast',
+    {   endpoint => 'wss://localhost:17070',
+        password => 'secret'
+    }
+  );
+
   $cast->deploy('wordpress');
   $cast->deploy('mysql');
   $cast->add_relation('wordpress', 'mysql');
@@ -75,6 +109,10 @@ Or sugar,
 Helper routines for dealing with functional charm testing
 
 =head1 METHODS
+
+=head2 get_creds
+
+Attempts to pull creds from a running juju environment
 
 =head2 deploy
 

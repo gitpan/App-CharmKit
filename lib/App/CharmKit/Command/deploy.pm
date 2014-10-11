@@ -1,5 +1,5 @@
 package App::CharmKit::Command::deploy;
-$App::CharmKit::Command::deploy::VERSION = '0.19';
+$App::CharmKit::Command::deploy::VERSION = '0.20';
 # ABSTRACT: Deploy charm
 
 
@@ -60,7 +60,7 @@ App::CharmKit::Command::deploy - Deploy charm
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 

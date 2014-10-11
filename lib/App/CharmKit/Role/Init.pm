@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.19';
+$App::CharmKit::Role::Init::VERSION = '0.20';
 # ABSTRACT: Initialization of new charms
 
 use strict;
@@ -221,7 +221,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 METHODS
 

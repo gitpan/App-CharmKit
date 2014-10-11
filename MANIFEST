@@ -37,7 +37,8 @@ share/lint_rules.yaml
 t/00-compile.t
 t/00-report-prereqs.dd
 t/00-report-prereqs.t
-t/00-sugar.t
+t/01-sugar.t
+t/02-caster.t
 t/release-kwalitee.t
 t/release-minimum-version.t
 weaver.ini

@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.19';
+$App::CharmKit::Sys::VERSION = '0.20';
 # ABSTRACT: system utilities
 
 
@@ -8,6 +8,8 @@ use warnings;
 use Path::Tiny;
 use IPC::Run qw(run timeout);
 use English;
+use Module::Runtime qw(use_package_optimistically);
+use Params::Util qw(_HASHLIKE);
 use base "Exporter::Tiny";
 
 our @EXPORT = qw/execute
@@ -24,7 +26,8 @@ our @EXPORT = qw/execute
   spew
   slurp
   service_control
-  service_status/;
+  service_status
+  load_helper/;
 
 
 sub spew {
@@ -165,6 +168,15 @@ sub service_status {
 }
 
 
+
+sub load_helper {
+    my $name  = shift;
+    my $opts  = _HASHLIKE(shift) or die "Options should be a HASHREF";
+    my $klass = "App::CharmKit::$name";
+    return use_package_optimistically($klass)->new(%{$opts});
+}
+
+
 1;
 
 __END__
@@ -179,7 +191,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 
@@ -325,6 +337,12 @@ Controls a upstart service
 =head2 service_status
 
 Get running status of service
+
+=head2 load_helper
+
+Helper for bringing in additional utilities. A lot of utilities are
+exported automatically however, this is useful if more control is
+required over the helpers.
 
 =head1 AUTHOR
 

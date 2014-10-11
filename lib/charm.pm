@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.19';
+$charm::VERSION = '0.20';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -47,12 +47,6 @@ sub import {
         Test::More->import::into($target);
     }
 
-    # Include juju capabilities for functional charm testing
-    if ($flags{caster}) {
-        require 'App/CharmKit/Cast.pm';
-        'App::CharmKit::Cast'->import::into($target);
-    }
-
     # expose system utilities by default
     require 'App/CharmKit/Sys.pm';
     'App::CharmKit::Sys'->import::into($target);
@@ -84,7 +78,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 
