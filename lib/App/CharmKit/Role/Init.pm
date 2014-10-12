@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '0.20';
+$App::CharmKit::Role::Init::VERSION = '1.0.1';
 # ABSTRACT: Initialization of new charms
 
 use strict;
@@ -57,11 +57,27 @@ perltidy.LOG
 
     # src/tests/00-basic.test
     (   my $basic_test =
-          qq{#!/usr/bin/env perl
-
-use charm -tester;
-
-# Start tests
+          q{#!/usr/bin/env perl
+#
+# USAGE:
+#
+# use charm -tester;
+#
+# Load cast
+# my $cast = load_helper(
+#     'Cast',
+#     { endpoint => 'wss://localhost:17070',
+#       password => 'jujuSecretPassword'
+#     }
+# );
+#
+# Example tests
+#
+# ok($cast->deploy('mysql', 'MY_mysql'), "Mysql was deployed");
+# ok($cast->deploy('precise/wordpress', 'MY_wordpress'), "Wordpress was deployed");
+# ok($cast->is_listening('mysql', 3306), "Mysql listening on default port");
+#
+# Always finish with this
 done_testing;
 }
     );
@@ -221,7 +237,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 0.20
+version 1.0.1
 
 =head1 METHODS
 

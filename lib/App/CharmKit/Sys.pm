@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '0.20';
+$App::CharmKit::Sys::VERSION = '1.0.1';
 # ABSTRACT: system utilities
 
 
@@ -191,7 +191,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 0.20
+version 1.0.1
 
 =head1 SYNOPSIS
 
@@ -343,6 +343,18 @@ Get running status of service
 Helper for bringing in additional utilities. A lot of utilities are
 exported automatically however, this is useful if more control is
 required over the helpers.
+
+B<Params>
+
+=over 4
+
+=item *
+
+C<opts>
+
+Options to pass into helper class
+
+=back
 
 =head1 AUTHOR
 

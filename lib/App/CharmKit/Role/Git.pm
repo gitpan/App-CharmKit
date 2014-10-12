@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Git;
-$App::CharmKit::Role::Git::VERSION = '0.20';
+$App::CharmKit::Role::Git::VERSION = '1.0.1';
 # ABSTRACT: Checkout from git endpoints
 
 use strict;
@@ -41,7 +41,7 @@ App::CharmKit::Role::Git - Checkout from git endpoints
 
 =head1 VERSION
 
-version 0.20
+version 1.0.1
 
 =head1 METHODS
 

@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '0.20';
+$charm::VERSION = '1.0.1';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -13,6 +13,7 @@ use Import::Into;
 use feature ();
 use Path::Tiny;
 use Test::More;
+use Test::Exception;
 
 if ($INC{"App/FatPacker/Trace.pm"}) {
     require JSON::PP;
@@ -24,7 +25,6 @@ if ($INC{"App/FatPacker/Trace.pm"}) {
     require IPC::Run;
     require Text::MicroTemplate;
     require Set::Tiny;
-    require Juju;
 }
 
 sub import {
@@ -45,6 +45,7 @@ sub import {
 
     if ($flags{tester}) {
         Test::More->import::into($target);
+        Test::Exception->import::into($target);
     }
 
     # expose system utilities by default
@@ -78,7 +79,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 0.20
+version 1.0.1
 
 =head1 SYNOPSIS
 

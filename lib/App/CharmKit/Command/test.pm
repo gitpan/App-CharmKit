@@ -1,5 +1,5 @@
 package App::CharmKit::Command::test;
-$App::CharmKit::Command::test::VERSION = '0.20';
+$App::CharmKit::Command::test::VERSION = '1.0.1';
 # ABSTRACT: Test your charm project
 
 
@@ -20,7 +20,6 @@ sub usage_desc {'%c test [-r]'}
 
 sub execute {
     my ($self, $opt, $args) = @_;
-    p $opt;
     if ($opt->{rebuild}) {
         $self->build;
     }
@@ -42,7 +41,7 @@ App::CharmKit::Command::test - Test your charm project
 
 =head1 VERSION
 
-version 0.20
+version 1.0.1
 
 =head1 SYNOPSIS
 

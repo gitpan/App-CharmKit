@@ -1,5 +1,5 @@
 package App::CharmKit::Cast;
-$App::CharmKit::Cast::VERSION = '0.20';
+$App::CharmKit::Cast::VERSION = '1.0.1';
 # ABSTRACT: Wrapper for functional charm testing
 
 
@@ -46,13 +46,13 @@ sub get_creds {
 }
 
 sub deploy {
-    my ($self, $charm) = @_;
-    $self->juju->deploy($charm);
+    my $self = shift;
+    $self->juju->deploy(@_);
 }
 
 sub add_relation {
-    my ($self, $endpointa, $endpointb) = @_;
-    $self->juju->add_relation($endpointa, $endpointb);
+    my $self = shift;
+    $self->juju->add_relation(@_);
 }
 
 sub is_listening {
@@ -81,7 +81,7 @@ App::CharmKit::Cast - Wrapper for functional charm testing
 
 =head1 VERSION
 
-version 0.20
+version 1.0.1
 
 =head1 SYNOPSIS
 
@@ -117,6 +117,18 @@ Attempts to pull creds from a running juju environment
 =head2 deploy
 
 Deploys a charm with default constraints
+
+B<Params>
+
+=over 4
+
+=item *
+
+C<charm>
+
+Name of charm to deploy
+
+=back
 
 =head2 add_relation
 
