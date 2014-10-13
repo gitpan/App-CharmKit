@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Init;
-$App::CharmKit::Role::Init::VERSION = '1.0.1';
+$App::CharmKit::Role::Init::VERSION = '1.0.2';
 # ABSTRACT: Initialization of new charms
 
 use strict;
@@ -101,6 +101,7 @@ done_testing;
             description => $project->{description},
             maintainer  => $project->{maintainer},
             categories  => $project->{categories},
+            provides    => {FIXME => {interface => "## FIXME ##"}}
         }
     );
     $yaml->write($path->child('metadata.yaml'));
@@ -237,7 +238,7 @@ App::CharmKit::Role::Init - Initialization of new charms
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.2
 
 =head1 METHODS
 

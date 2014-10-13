@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '1.0.1';
+$App::CharmKit::Sys::VERSION = '1.0.2';
 # ABSTRACT: system utilities
 
 
@@ -10,6 +10,7 @@ use IPC::Run qw(run timeout);
 use English;
 use Module::Runtime qw(use_package_optimistically);
 use Params::Util qw(_HASHLIKE);
+use Config::Tiny;
 use base "Exporter::Tiny";
 
 our @EXPORT = qw/execute
@@ -27,7 +28,8 @@ our @EXPORT = qw/execute
   slurp
   service_control
   service_status
-  load_helper/;
+  load_helper
+  read_ini/;
 
 
 sub spew {
@@ -177,6 +179,15 @@ sub load_helper {
 }
 
 
+
+sub read_ini {
+    my $path = path(shift);
+    my $cfg  = Config::Tiny->new;
+    return $cfg->read($path)->{_};
+}
+
+
+
 1;
 
 __END__
@@ -191,7 +202,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.2
 
 =head1 SYNOPSIS
 
@@ -353,6 +364,23 @@ B<Params>
 C<opts>
 
 Options to pass into helper class
+
+=back
+
+=head2 read_ini
+
+Basic config parsing for ini like files like whats found in most of B</etc/default>.
+This will also automatically return its root property.
+
+B<Params>
+
+=over 4
+
+=item *
+
+C<path>
+
+Path of config file to read
 
 =back
 

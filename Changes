@@ -1,10 +1,56 @@
 ==================================================
-Changes from 2013-10-12 00:00:00 +0000 to present.
+Changes from 2013-10-13 00:00:00 +0000 to present.
 ==================================================
 
 ------------------------------------------
-version 1.0.1 at 2014-10-12 20:25:26 +0000
+version 1.0.2 at 2014-10-13 01:52:34 +0000
 ------------------------------------------
+
+  Change: 60c20e36f04ca4a2549434d82c8d51ff03ef2941
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-12 21:52:24 +0000
+
+    add support for reading ini files
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 105eb6d7a235bdbc447b458d0744a145d051bee9
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-12 21:10:34 +0000
+
+    caster tests updated to only run if juju env available
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 625e3b29ff75056d2dc51af8212b55144ce49152
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-12 17:56:34 +0000
+
+    change FATAL to ERROR to better match existing charm proof
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 200a91c17cbd5d31d67ba025044e23b6bdbaa19f
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-12 17:05:23 +0000
+
+    update init to add a provides section in metadata
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: c621d2f65ae43f98e7a22f60dcfdd22205bc0c80
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-12 17:05:13 +0000
+
+    update lint to check for icon.svg
+
+    Signed-off-by: Adam Stokes <adam.stokes@ubuntu.com> 
+
+  Change: 020ccff41c9f572450dab8fc757668b1928ff31c
+  Author: Adam Stokes <adam.stokes@ubuntu.com>
+  Date : 2014-10-12 16:25:37 +0000
+
+    v1.0.1 
 
   Change: b2a6537f71097d49871987bb4c6117ef566a2905
   Author: Adam Stokes <adam.stokes@ubuntu.com>

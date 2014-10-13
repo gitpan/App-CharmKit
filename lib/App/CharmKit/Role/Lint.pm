@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Lint;
-$App::CharmKit::Role::Lint::VERSION = '1.0.1';
+$App::CharmKit::Role::Lint::VERSION = '1.0.2';
 # ABSTRACT: charm linter
 
 use strict;
@@ -48,6 +48,9 @@ sub parse {
     } else {
       $self->validate_tests;
     }
+
+    # Check for icon.svg
+    $self->lint_warn('icon.svg', 'No icon.svg') unless path('icon.svg')->exists;
 }
 
 
@@ -160,7 +163,7 @@ sub validate_metadata {
             $meta_key_required_set->as_string)
     ) unless $meta_key_required_set->is_empty;
 
-    $self->lint_warn(
+    $self->lint_info(
         $metadata->{name},
         sprintf('Missing optional item(s): %s',
             $meta_key_optional_set->as_string)
@@ -173,6 +176,12 @@ sub validate_metadata {
         $self->lint_fatal($metadata->{name},
                 "Can not have maintainer and maintainer(s) listed. "
               . "Only pick one.");
+    }
+
+    # no matainer and maintainers isn't defined
+    if (!$meta_keys_on_disk_set->contains(qw/maintainer/)) {g
+        $self->lint_fatal($metadata->{name},
+            "Need at least a Maintainer or Maintainers Field defined.");
     }
 
     my $maintainers = [];
@@ -300,7 +309,7 @@ sub lint_fatal {
     $self->has_error(1);
     $self->lint_print(
         $item,
-        {   level   => 'FATAL',
+        {   level   => 'ERROR',
             message => $message
         }
     );
@@ -347,7 +356,7 @@ App::CharmKit::Role::Lint - charm linter
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.2
 
 =head1 SYNOPSIS
 

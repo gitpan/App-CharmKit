@@ -1,5 +1,5 @@
 package App::CharmKit::Logging;
-$App::CharmKit::Logging::VERSION = '1.0.1';
+$App::CharmKit::Logging::VERSION = '1.0.2';
 # ABSTRACT: reporting utilities
 
 use strict;
@@ -41,7 +41,7 @@ App::CharmKit::Logging - reporting utilities
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.2
 
 =head1 SYNOPSIS
 

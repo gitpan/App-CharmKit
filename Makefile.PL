@@ -29,6 +29,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "App::Cmd::Setup" => 0,
     "Class::Tiny" => 0,
+    "Config::Tiny" => 0,
     "Data::Dumper" => 0,
     "Data::Faker" => 0,
     "Email::Address" => 0,
@@ -80,7 +81,7 @@ my %WriteMakefileArgs = (
     "autodie" => 0,
     "lib" => 0
   },
-  "VERSION" => "1.0.1",
+  "VERSION" => "1.0.2",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -92,6 +93,7 @@ my %FallbackPrereqs = (
   "App::FatPacker" => 0,
   "App::Prove" => 0,
   "Class::Tiny" => 0,
+  "Config::Tiny" => 0,
   "Data::Dumper" => 0,
   "Data::Faker" => 0,
   "Email::Address" => 0,

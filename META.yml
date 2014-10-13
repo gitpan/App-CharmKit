@@ -33,6 +33,7 @@ name: App-CharmKit
 requires:
   App::Cmd::Setup: '0'
   Class::Tiny: '0'
+  Config::Tiny: '0'
   Data::Dumper: '0'
   Data::Faker: '0'
   Email::Address: '0'
@@ -66,5 +67,5 @@ requires:
   utf8::all: '0'
   warnings: '0'
 resources:
-  repository: git://github.com/charmkit/App-CharmKit.git
-version: 1.0.1
+  repository: git://github.com/battlemidget/App-CharmKit.git
+version: 1.0.2

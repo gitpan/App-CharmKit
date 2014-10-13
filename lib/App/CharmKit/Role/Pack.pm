@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Pack;
-$App::CharmKit::Role::Pack::VERSION = '1.0.1';
+$App::CharmKit::Role::Pack::VERSION = '1.0.2';
 # ABSTRACT: Fatpack hooks
 
 use strict;
@@ -58,7 +58,7 @@ App::CharmKit::Role::Pack - Fatpack hooks
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.2
 
 =head1 ATTRIBUTES
 
