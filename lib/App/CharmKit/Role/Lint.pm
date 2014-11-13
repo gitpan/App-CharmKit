@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Lint;
-$App::CharmKit::Role::Lint::VERSION = '1.0.2';
+$App::CharmKit::Role::Lint::VERSION = '1.0.5';
 # ABSTRACT: charm linter
 
 use strict;
@@ -356,7 +356,7 @@ App::CharmKit::Role::Lint - charm linter
 
 =head1 VERSION
 
-version 1.0.2
+version 1.0.5
 
 =head1 SYNOPSIS
 

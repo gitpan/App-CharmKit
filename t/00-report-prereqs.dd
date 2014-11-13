@@ -1,8 +1,7 @@
 do { my $x = {
        'configure' => {
                         'requires' => {
-                                        'ExtUtils::MakeMaker' => '0',
-                                        'File::ShareDir::Install' => '0.06'
+                                        'Module::Build::Tiny' => '0.039'
                                       }
                       },
        'develop' => {
@@ -12,6 +11,7 @@ do { my $x = {
                     },
        'runtime' => {
                       'requires' => {
+                                      'App::CharmKit::Role::Pack' => '0',
                                       'App::Cmd::Setup' => '0',
                                       'Class::Tiny' => '0',
                                       'Config::Tiny' => '0',

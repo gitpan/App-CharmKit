@@ -1,5 +1,5 @@
 package App::CharmKit;
-$App::CharmKit::VERSION = '1.0.2';
+$App::CharmKit::VERSION = '1.0.5';
 # ABSTRACT: Perl Framework for authoring Juju charms
 
 use strict;
@@ -20,7 +20,7 @@ App::CharmKit - Perl Framework for authoring Juju charms
 
 =head1 VERSION
 
-version 1.0.2
+version 1.0.5
 
 =head1 AUTHOR
 

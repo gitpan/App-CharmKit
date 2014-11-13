@@ -1,5 +1,5 @@
 package App::CharmKit::Sys;
-$App::CharmKit::Sys::VERSION = '1.0.2';
+$App::CharmKit::Sys::VERSION = '1.0.5';
 # ABSTRACT: system utilities
 
 
@@ -202,7 +202,7 @@ App::CharmKit::Sys - system utilities
 
 =head1 VERSION
 
-version 1.0.2
+version 1.0.5
 
 =head1 SYNOPSIS
 

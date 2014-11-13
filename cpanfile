@@ -1,3 +1,4 @@
+requires "App::CharmKit::Role::Pack" => "0";
 requires "App::Cmd::Setup" => "0";
 requires "Class::Tiny" => "0";
 requires "Config::Tiny" => "0";
@@ -59,8 +60,7 @@ on 'test' => sub {
 };
 
 on 'configure' => sub {
-  requires "ExtUtils::MakeMaker" => "0";
-  requires "File::ShareDir::Install" => "0.06";
+  requires "Module::Build::Tiny" => "0.039";
 };
 
 on 'develop' => sub {

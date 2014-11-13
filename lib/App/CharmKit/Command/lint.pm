@@ -1,5 +1,5 @@
 package App::CharmKit::Command::lint;
-$App::CharmKit::Command::lint::VERSION = '1.0.2';
+$App::CharmKit::Command::lint::VERSION = '1.0.5';
 # ABSTRACT: Charm Linter
 
 
@@ -34,7 +34,7 @@ App::CharmKit::Command::lint - Charm Linter
 
 =head1 VERSION
 
-version 1.0.2
+version 1.0.5
 
 =head1 SYNOPSIS
 

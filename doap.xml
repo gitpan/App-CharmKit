@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Project
+  xmlns="http://usefulinc.com/ns/doap#"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  >
+  <name>App-CharmKit</name>
+  <shortdesc>Perl Framework for authoring Juju charms</shortdesc>
+  <developer>
+    <foaf:Person>
+      <foaf:name>Adam Stokes</foaf:name>
+      <foaf:mbox rdf:resource="mailto:adamjs@cpan.org" />
+    </foaf:Person>
+  </developer>
+  <license rdf:resource="http://dev.perl.org/licenses/" />
+  <repository>
+    <GitRepository>
+      <location rdf:resource="git://github.com/charmkit/App-CharmKit" />
+    </GitRepository>
+  </repository>
+  <programming-language>Perl</programming-language>
+</Project>

@@ -1,5 +1,5 @@
 package App::CharmKit::Role::Generate;
-$App::CharmKit::Role::Generate::VERSION = '1.0.2';
+$App::CharmKit::Role::Generate::VERSION = '1.0.5';
 # ABSTRACT: Generators for common tasks
 
 use strict;
@@ -8,7 +8,7 @@ use Path::Tiny;
 
 
 use Class::Tiny {
-    src => path('.')->child('src/hooks'),
+    src => path('.')->child('hooks'),
     default_hooks =>
       ['install', 'config-changed', 'upgrade-charm', 'start', 'stop']
 };
@@ -36,7 +36,7 @@ log("Start of charm authoring for $hook");
 sub create_all_hooks {
     my ($self) = @_;
     foreach (@{$self->default_hooks}) {
-        $self->create_hook($_);
+        $self->create_hook($_) unless $self->src->child($_)->exists;
     }
 }
 
@@ -54,7 +54,7 @@ App::CharmKit::Role::Generate - Generators for common tasks
 
 =head1 VERSION
 
-version 1.0.2
+version 1.0.5
 
 =head1 ATTRIBUTES
 

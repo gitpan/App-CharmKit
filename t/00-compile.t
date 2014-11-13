@@ -4,30 +4,26 @@ use warnings;
 
 # this test was generated with Dist::Zilla::Plugin::Test::Compile 2.046
 
-use Test::More  tests => 22 + ($ENV{AUTHOR_TESTING} ? 1 : 0);
+use Test::More  tests => 18 + ($ENV{AUTHOR_TESTING} ? 1 : 0);
 
 
 
 my @module_files = (
     'App/CharmKit.pm',
     'App/CharmKit/Cast.pm',
-    'App/CharmKit/Command/clean.pm',
     'App/CharmKit/Command/clone.pm',
     'App/CharmKit/Command/deploy.pm',
     'App/CharmKit/Command/generate.pm',
     'App/CharmKit/Command/init.pm',
     'App/CharmKit/Command/lint.pm',
-    'App/CharmKit/Command/pack.pm',
     'App/CharmKit/Command/test.pm',
     'App/CharmKit/Faker.pm',
     'App/CharmKit/Helper.pm',
     'App/CharmKit/Logging.pm',
-    'App/CharmKit/Role/Clean.pm',
     'App/CharmKit/Role/Generate.pm',
     'App/CharmKit/Role/Git.pm',
     'App/CharmKit/Role/Init.pm',
     'App/CharmKit/Role/Lint.pm',
-    'App/CharmKit/Role/Pack.pm',
     'App/CharmKit/Sys.pm',
     'charm.pm'
 );

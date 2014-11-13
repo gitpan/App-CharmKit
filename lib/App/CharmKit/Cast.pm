@@ -1,5 +1,5 @@
 package App::CharmKit::Cast;
-$App::CharmKit::Cast::VERSION = '1.0.2';
+$App::CharmKit::Cast::VERSION = '1.0.5';
 # ABSTRACT: Wrapper for functional charm testing
 
 
@@ -81,7 +81,7 @@ App::CharmKit::Cast - Wrapper for functional charm testing
 
 =head1 VERSION
 
-version 1.0.2
+version 1.0.5
 
 =head1 SYNOPSIS
 
