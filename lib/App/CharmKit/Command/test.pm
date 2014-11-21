@@ -1,11 +1,10 @@
 package App::CharmKit::Command::test;
-$App::CharmKit::Command::test::VERSION = '1.0.5';
+$App::CharmKit::Command::test::VERSION = '1.0.6';
 # ABSTRACT: Test your charm project
 
 
 use strict;
 use warnings;
-use parent 'App::CharmKit::Role::Pack';
 use App::CharmKit -command;
 
 sub opt_spec {
@@ -20,9 +19,6 @@ sub usage_desc {'%c test [-r]'}
 
 sub execute {
     my ($self, $opt, $args) = @_;
-    if ($opt->{rebuild}) {
-        $self->build;
-    }
     my $cmd = "prove -lv tests/*.test";
     system($cmd);
 }
@@ -41,7 +37,7 @@ App::CharmKit::Command::test - Test your charm project
 
 =head1 VERSION
 
-version 1.0.5
+version 1.0.6
 
 =head1 SYNOPSIS
 

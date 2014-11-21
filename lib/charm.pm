@@ -1,5 +1,5 @@
 package charm;
-$charm::VERSION = '1.0.5';
+$charm::VERSION = '1.0.6';
 # ABSTRACT: charm helpers for App::CharmKit
 
 
@@ -14,18 +14,6 @@ use feature ();
 use Path::Tiny;
 use Test::More;
 use Test::Exception;
-
-if ($INC{"App/FatPacker/Trace.pm"}) {
-    require JSON::PP;
-    require Path::Tiny;
-    require Test::More;
-    require HTTP::Tiny;
-    require IO::Socket::SSL;
-    require YAML::Tiny;
-    require IPC::Run;
-    require Text::MicroTemplate;
-    require Set::Tiny;
-}
 
 sub import {
     my $target = caller;
@@ -79,7 +67,7 @@ charm - charm helpers for App::CharmKit
 
 =head1 VERSION
 
-version 1.0.5
+version 1.0.6
 
 =head1 SYNOPSIS
 

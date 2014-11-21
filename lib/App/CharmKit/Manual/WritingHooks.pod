@@ -13,13 +13,13 @@ App::CharmKit::Manual::WritingHooks - How to write hooks using CharmKit
 
 =head1 VERSION
 
-version 1.0.5
+version 1.0.6
 
 =head1 Creating a hook
 
   $ charmkit generate config-changed
 
-This places a templated hook in B<src/hooks/> where all hook development resides.
+This places a templated hook in B<hooks/> where all hook development resides.
 
 =head1 Writing a hook
 

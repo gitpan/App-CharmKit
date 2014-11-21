@@ -17,7 +17,8 @@
   <license rdf:resource="http://dev.perl.org/licenses/" />
   <repository>
     <GitRepository>
-      <location rdf:resource="git://github.com/charmkit/App-CharmKit" />
+      <browse rdf:resource="https://github.com/battlemidget/App-CharmKit" />
+      <location rdf:resource="git://github.com/battlemidget/App-CharmKit.git" />
     </GitRepository>
   </repository>
   <programming-language>Perl</programming-language>
